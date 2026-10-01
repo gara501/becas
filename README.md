@@ -16,6 +16,10 @@ npm run build
 
 Para desarrollo: `npm run dev`. El build incluye React 19, React Router, Motion, Tailwind y React Leaflet con grupos de marcadores. La vista mundial colorea los destinos por número de convocatorias (1, 2–4, 5 o más). Al elegir un país, muestra marcadores de becas, agrupa puntos coincidentes y abre la fuente oficial desde cada ficha.
 
+## Próximas mejoras
+
+El [plan de mejoras](PLAN_MEJORAS.md) organiza vigencia de datos, fichas, experiencia móvil, favoritos, calendario y analítica en cuatro etapas.
+
 ## Datos y trazabilidad
 
 - Base depurada: [data/fase4/becas_limpias_geocodificadas.csv](data/fase4/becas_limpias_geocodificadas.csv).
