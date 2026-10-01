@@ -32,7 +32,7 @@ S = pequeño; M = mediano. Son tamaños relativos, no promesas de duración.
 
 **Alcance:** M5, M6 y M10. Incorporar un panel de detalle con todos los campos útiles, «No verificado» cuando corresponda y un único enlace principal a la fuente oficial. En móvil, ofrecer un cambio claro entre lista y mapa. Refinar los estados vacíos y la accesibilidad.
 
-**Entrega:** vista de detalle y navegación móvil más cómoda, conservando el diseño editorial.
+**Entrega implementada (2026-10-01):** ficha con requisitos, idioma, monto, cobertura, plazos, fuente y precisión geográfica; selector lista/mapa en móvil con filtros persistentes; foco visible, navegación con teclado, estados vacíos y movimiento reducido.
 
 **Aceptación:** se puede llegar al detalle y volver con teclado; el panel explica la precisión del marcador; alternar lista/mapa no borra filtros; no hay desbordamiento horizontal ni animación obligatoria si el usuario prefiere movimiento reducido.
 

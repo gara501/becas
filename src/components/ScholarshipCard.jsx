@@ -1,7 +1,7 @@
 import { AlertTriangle, ArrowUpRight, CalendarDays, LocateFixed, MapPin, ShieldCheck } from 'lucide-react'
 import { DESCONOCIDO, fechaCorta, textoCobertura } from '../data/catalogo.js'
 
-export default function ScholarshipCard({ item, index, onLocate, selected, estado }) {
+export default function ScholarshipCard({ item, index, onLocate, onDetails, selected, estado }) {
   const location = item.ciudad !== DESCONOCIDO ? `${item.ciudad}, ${item.pais_destino}` : item.pais_destino
   const hasPoint = item.latitud !== DESCONOCIDO
   return (
@@ -20,6 +20,7 @@ export default function ScholarshipCard({ item, index, onLocate, selected, estad
       <p className="card-verified"><ShieldCheck size={13} /> Verificada: {fechaCorta(item.fecha_ultima_verificacion)}</p>
       {estado.pendiente ? <p className="card-warning"><AlertTriangle size={13} /> Revisión pendiente: confirma el plazo en la fuente oficial.</p> : null}
       {estado.motivo ? <p className="card-warning"><AlertTriangle size={13} /> {estado.motivo}</p> : null}
+      <button className="card-detail-link" type="button" onClick={(event) => onDetails(item, event.currentTarget)}>Ver ficha completa <ArrowUpRight size={14} /></button>
       <div className="card-foot">
         <span className="closing"><CalendarDays size={14} /> {estado.clave === 'recurrente' ? 'Cierre publicado' : 'Cierre'}: {fechaCorta(item.fecha_cierre)}</span>
         <div className="card-actions">

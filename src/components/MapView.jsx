@@ -64,7 +64,7 @@ function clusterIcon(cluster) {
   return L.divIcon({ className: 'atlas-cluster', html: `<span>${count}</span>`, iconSize: [58, 58], iconAnchor: [29, 29] })
 }
 
-function popupContent(item, estado) {
+function popupContent(item, estado, onDetails) {
   const wrap = document.createElement('div')
   wrap.className = 'atlas-popup'
   const eyebrow = document.createElement('div')
@@ -89,11 +89,27 @@ function popupContent(item, estado) {
   verified.textContent = `Verificada: ${fechaCorta(item.fecha_ultima_verificacion)}`
   wrap.append(eyebrow, heading, description, cover, date, verified)
   if (estado.pendiente) { const warning = document.createElement('p'); warning.className = 'popup-warning'; warning.textContent = 'Revisión pendiente: confirma el plazo en la fuente oficial.'; wrap.append(warning) }
-  wrap.append(link)
+  const details = document.createElement('button')
+  details.type = 'button'
+  details.className = 'popup-details'
+  details.textContent = 'VER FICHA COMPLETA'
+  details.addEventListener('click', () => onDetails(item, details))
+  wrap.append(details, link)
   return wrap
 }
 
-function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, estadoDe }) {
+function MapSizeSync() {
+  const map = useMap()
+  useEffect(() => {
+    const element = map.getContainer()
+    const observer = new ResizeObserver(() => { if (element.offsetWidth && element.offsetHeight) map.invalidateSize({ pan: false }) })
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [map])
+  return null
+}
+
+function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, onDetails, estadoDe }) {
   const map = useMap()
   const layers = useRef(null)
   const markers = useRef(new Map())
@@ -101,9 +117,12 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
   useEffect(() => {
     const point = COUNTRY_POINTS.get(selectedCountry)
     if (point) {
-      map.flyTo(point, selectedCountry === 'Singapur' ? 10 : selectedCountry === 'Países Bajos' ? 6 : 5, { duration: 0.7 })
+      const zoom = selectedCountry === 'Singapur' ? 10 : selectedCountry === 'Países Bajos' ? 6 : 5
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) map.setView(point, zoom, { animate: false })
+      else map.flyTo(point, zoom, { duration: 0.7 })
     } else {
-      map.flyTo(INITIAL_CENTER, INITIAL_ZOOM, { duration: 0.7 })
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) map.setView(INITIAL_CENTER, INITIAL_ZOOM, { animate: false })
+      else map.flyTo(INITIAL_CENTER, INITIAL_ZOOM, { duration: 0.7 })
     }
   }, [map, selectedCountry])
 
@@ -122,7 +141,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
         const marker = L.marker([Number(item.latitud), Number(item.longitud)], {
           icon: bubbleIcon('•', 'scholarship'), scholarshipCount: 1, title: item.nombre,
         })
-        marker.bindPopup(popupContent(item, estadoDe(item)), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
+        marker.bindPopup(popupContent(item, estadoDe(item), onDetails), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
         marker.on('click', () => onScholarshipSelect(item.id))
         group.addLayer(marker)
         nextMarkers.set(item.id, marker)
@@ -150,7 +169,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
       layers.current = null
       markers.current = new Map()
     }
-  }, [map, items, selectedCountry, onCountrySelect, onScholarshipSelect, estadoDe])
+  }, [map, items, selectedCountry, onCountrySelect, onScholarshipSelect, onDetails, estadoDe])
 
   useEffect(() => {
     if (!selectedId || !selectedCountry || !layers.current) return
@@ -161,7 +180,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
   return null
 }
 
-export default function MapView({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, estadoDe }) {
+export default function MapView({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, onDetails, estadoDe }) {
   const offMapCount = useMemo(() => items.filter((item) => item.latitud === DESCONOCIDO).length, [items])
   const mapCounts = useMemo(() => {
     const counts = new Map()
@@ -178,10 +197,12 @@ export default function MapView({ items, selectedCountry, selectedId, onCountryS
   return (
     <div className="map-shell">
       <MapContainer center={INITIAL_CENTER} zoom={INITIAL_ZOOM} minZoom={2} maxZoom={10} zoomControl={false} scrollWheelZoom={false} className="map-canvas" preferCanvas>
+        <MapSizeSync />
         <GeoJSON data={WORLD} style={countryStyle} attribution={'Límites: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · Coordenadas: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'} />
         <ZoomControl position="bottomright" />
-        <MapContent items={items} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={onCountrySelect} onScholarshipSelect={onScholarshipSelect} estadoDe={estadoDe} />
+        <MapContent items={items} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={onCountrySelect} onScholarshipSelect={onScholarshipSelect} onDetails={onDetails} estadoDe={estadoDe} />
       </MapContainer>
+      {items.length === 0 ? <div className="map-empty" role="status">Sin becas para estos filtros. Ajusta la búsqueda para ver destinos.</div> : null}
       <div className="map-topbar"><span className="map-live-dot" /> {selectedCountry ? `VISTA · ${selectedCountry.toUpperCase()}` : 'VISTA MUNDIAL · PAÍSES'}</div>
       {offMapCount > 0 ? <div className="map-unplaced">{offMapCount} {offMapCount === 1 ? 'beca sin punto único' : 'becas sin punto único'} · visibles en la lista</div> : null}
       <div className="map-legend" aria-label="Leyenda del mapa">
