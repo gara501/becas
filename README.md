@@ -14,7 +14,7 @@ npm ci
 npm run build
 ```
 
-Para desarrollo: `npm run dev`. El build incluye React 19, React Router, Motion, Tailwind y React Leaflet con grupos de marcadores. La vista mundial colorea los destinos por número de convocatorias (1, 2–4, 5 o más). Al elegir un país, muestra marcadores de becas, agrupa puntos coincidentes y abre la fuente oficial desde cada ficha.
+Para desarrollo: `npm run dev`. El build incluye React 19, React Router, Motion, Tailwind y React Leaflet con grupos de marcadores. La vista mundial colorea los destinos por número de convocatorias (1, 2–4, 5 o más). Al elegir un país, muestra marcadores de becas, agrupa puntos coincidentes y abre la fuente oficial desde cada ficha. En la vista por país, verde identifica convocatorias abiertas, naranja las que cierran dentro de 30 días y gris las cerradas; el texto de estado acompaña siempre al color. La ficha se abre y cierra con una transición breve que respeta el movimiento reducido.
 
 ## Guardar, comparar y recordar cierres
 

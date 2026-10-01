@@ -19,7 +19,7 @@ export function SavedPanel({ entries, byId, estadoDe, compareIds, onToggleFavori
           const item = byId.get(entry.id)
           const selected = compareIds.includes(entry.id)
           return <article className="saved-entry" key={entry.id}>
-            <div className="saved-entry-head"><span>{item?.pais_destino || entry.pais_destino}</span><span className={item ? `status status-${estadoDe(item).clave}` : 'saved-retired'}>{item ? estadoDe(item).etiqueta : 'Retirada de la base'}</span></div>
+            <div className="saved-entry-head"><span>{item?.pais_destino || entry.pais_destino}</span><span className={item ? `status status-${estadoDe(item).clave}` : 'saved-retired'}>{item ? <><i />{estadoDe(item).etiqueta}</> : 'Retirada de la base'}</span></div>
             <h3>{item?.nombre || entry.nombre}</h3>
             {item ? <p>Cierre publicado: {showDate(item.fecha_cierre)}</p> : <p>Este registro ya no aparece en el catálogo actual. Conservamos el nombre para que puedas identificarlo y quitarlo.</p>}
             <div className="saved-entry-actions">
@@ -35,7 +35,7 @@ export function SavedPanel({ entries, byId, estadoDe, compareIds, onToggleFavori
 }
 
 const compareFields = [
-  ['Estado', (item, estadoDe) => estadoDe(item).etiqueta],
+  ['Estado', (item, estadoDe) => <span className={`status status-${estadoDe(item).clave}`}><i />{estadoDe(item).etiqueta}</span>],
   ['Destino', (item) => show(item.pais_destino)],
   ['Nivel', (item) => show(item.nivel)],
   ['Área', (item) => show(item.area_conocimiento)],

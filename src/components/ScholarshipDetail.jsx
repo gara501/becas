@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { AlertTriangle, ArrowLeft, ArrowUpRight, CalendarDays, Download, GitCompareArrows, Globe2, Heart, MapPin, ShieldCheck, X } from 'lucide-react'
 import { DESCONOCIDO, fechaCorta } from '../data/catalogo.js'
 import { usePanelFocus } from '../hooks/usePanelFocus.js'
@@ -22,9 +23,10 @@ export default function ScholarshipDetail({ item, estado, onClose, favorite, com
   const panel = useRef(null)
   const closeButton = useRef(null)
   usePanelFocus(panel, closeButton, onClose)
+  const reduceMotion = useReducedMotion()
 
-  return <div className="detail-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}>
-    <aside ref={panel} className="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" aria-describedby="detail-intro">
+  return <motion.div initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.28 }} className="detail-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}>
+    <motion.aside ref={panel} initial={reduceMotion ? false : { x: 52, opacity: 0.92 }} animate={{ x: 0, opacity: 1 }} exit={{ x: reduceMotion ? 0 : 42, opacity: reduceMotion ? 1 : 0.92 }} transition={{ duration: reduceMotion ? 0 : 0.34, ease: [0.22, 1, 0.36, 1] }} className="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" aria-describedby="detail-intro">
       <div className="detail-topbar"><span>ATLAS / FICHA DE BECA</span><button ref={closeButton} type="button" onClick={onClose} aria-label="Cerrar ficha"><X size={21} /></button></div>
       <div className="detail-scroll">
         <header className="detail-hero"><div className="detail-overline"><span>{item.pais_destino}</span><span className={`status status-${estado.clave}`}><i />{estado.etiqueta}</span></div><h2 id="detail-title">{item.nombre}</h2><p id="detail-intro">{item.entidad_oferente}</p></header>
@@ -50,6 +52,6 @@ export default function ScholarshipDetail({ item, estado, onClose, favorite, com
         <p className="detail-reminder">Los plazos pueden cambiar por edición. Revisa las condiciones vigentes antes de enviar tu solicitud.</p>
       </div>
       <footer className="detail-footer"><button type="button" onClick={onClose}><ArrowLeft size={16} /> Volver a resultados</button><a href={item.url_oficial} data-beca-id={item.id} data-link-context="ficha" target="_blank" rel="noopener noreferrer">Ver convocatoria oficial <ArrowUpRight size={17} /></a></footer>
-    </aside>
-  </div>
+    </motion.aside>
+  </motion.div>
 }

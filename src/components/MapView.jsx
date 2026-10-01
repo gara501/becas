@@ -50,9 +50,9 @@ const MAP_NAMES = {
   Singapur: 'Singapore', Suecia: 'Sweden',
 }
 
-function bubbleIcon(count, kind = 'country') {
+function bubbleIcon(count, kind = 'country', status = '') {
   return L.divIcon({
-    className: `atlas-marker atlas-marker-${kind}`,
+    className: `atlas-marker atlas-marker-${kind}${status ? ` atlas-marker-${status}` : ''}`,
     html: `<span>${count}</span>`,
     iconSize: kind === 'country' ? [48, 48] : [32, 32],
     iconAnchor: kind === 'country' ? [24, 24] : [16, 16],
@@ -68,7 +68,7 @@ function popupContent(item, estado, onDetails) {
   const wrap = document.createElement('div')
   wrap.className = 'atlas-popup'
   const eyebrow = document.createElement('div')
-  eyebrow.className = 'popup-eyebrow'
+  eyebrow.className = `popup-eyebrow popup-eyebrow-${estado.clave}`
   eyebrow.textContent = `${item.pais_destino} / ${estado.etiqueta.toUpperCase()}`
   const heading = document.createElement('h3')
   heading.textContent = item.nombre
@@ -140,10 +140,11 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
     if (selectedCountry) {
       for (const item of items) {
         if (item.latitud === DESCONOCIDO || item.longitud === DESCONOCIDO) continue
+        const estado = estadoDe(item)
         const marker = L.marker([Number(item.latitud), Number(item.longitud)], {
-          icon: bubbleIcon('•', 'scholarship'), scholarshipCount: 1, title: item.nombre,
+          icon: bubbleIcon('•', 'scholarship', estado.clave), scholarshipCount: 1, title: item.nombre,
         })
-        marker.bindPopup(popupContent(item, estadoDe(item), onDetails), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
+        marker.bindPopup(popupContent(item, estado, onDetails), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
         marker.on('click', () => onScholarshipSelect(item.id))
         group.addLayer(marker)
         nextMarkers.set(item.id, marker)
@@ -208,10 +209,18 @@ export default function MapView({ items, selectedCountry, selectedId, onCountryS
       <div className="map-topbar"><span className="map-live-dot" /> {selectedCountry ? `VISTA · ${selectedCountry.toUpperCase()}` : 'VISTA MUNDIAL · PAÍSES'}</div>
       {offMapCount > 0 ? <div className="map-unplaced">{offMapCount} {offMapCount === 1 ? 'beca sin punto único' : 'becas sin punto único'} · visibles en la lista</div> : null}
       <div className="map-legend" aria-label="Leyenda del mapa">
-        <span><i className="legend-one" /> 1 beca</span>
-        <span><i className="legend-mid" /> 2–4</span>
-        <span><i className="legend-high" /> 5 o más</span>
-        <span><i className="legend-cluster" /> Grupo</span>
+        {selectedCountry ? <>
+          <span><i className="legend-open" /> Abierta</span>
+          <span><i className="legend-soon" /> Cierra pronto</span>
+          <span><i className="legend-closed" /> Cerrada</span>
+          <span><i className="legend-other" /> Otra vigencia</span>
+          <span><i className="legend-cluster" /> Grupo</span>
+        </> : <>
+          <span><i className="legend-one" /> 1 beca</span>
+          <span><i className="legend-mid" /> 2–4</span>
+          <span><i className="legend-high" /> 5 o más</span>
+          <span><i className="legend-cluster" /> Grupo</span>
+        </>}
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Compass, ExternalLink, GitCompareArrows, Globe2, Heart, Info, List, Map as MapIcon, MapPinned, ShieldCheck } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import FilterPanel from './components/FilterPanel.jsx'
 import AnalyticsConsent from './components/AnalyticsConsent.jsx'
 import { analyticsChoice, startAnalytics, trackEvent, trackPageView } from './analytics.js'
@@ -69,6 +69,12 @@ function AtlasPage() {
   const reduceMotion = useReducedMotion()
   const hoy = fechaHoyColombia()
   const estadoDe = useCallback((item) => estadoVigente(item, IDS_PENDIENTES_REVISION, hoy), [hoy])
+  const estadoVisual = useCallback((item) => {
+    const estado = estadoDe(item)
+    return cierraPronto(item, IDS_PENDIENTES_REVISION, hoy)
+      ? { ...estado, clave: 'pronto', etiqueta: 'Cierra pronto' }
+      : estado
+  }, [estadoDe, hoy])
   const filtered = useMemo(() => ordenarBecas(filtrarBecas(BECAS, filters, estadoDe).filter((item) => filters.vista === 'todas' || (filters.vista === 'abiertas' && estadoDe(item).clave === 'abierta') || (filters.vista === 'pronto' && cierraPronto(item, IDS_PENDIENTES_REVISION, hoy)) || (filters.vista === 'recurrentes' && estadoDe(item).clave === 'recurrente')), orden), [filters, estadoDe, hoy, orden])
   useEffect(() => {
     if (!Object.entries(filters).some(([key, value]) => value !== DEFAULT_FILTERS[key])) return undefined
@@ -97,7 +103,10 @@ function AtlasPage() {
     setSelectedId(null)
   }, [])
   const openDetails = useCallback((item, opener) => { detailOpener.current = opener; setDetailId(item.id) }, [])
-  const closeDetails = useCallback(() => { setDetailId(null); requestAnimationFrame(() => (detailOpener.current?.isConnected ? detailOpener.current : savedTrigger.current)?.focus()) }, [])
+  const closeDetails = useCallback(() => { setDetailId(null) }, [])
+  const returnDetailFocus = useCallback(() => {
+    requestAnimationFrame(() => (detailOpener.current?.isConnected ? detailOpener.current : savedTrigger.current)?.focus())
+  }, [])
   const closeCollection = useCallback(() => { setCollectionPanel(null); requestAnimationFrame(() => (collectionOpener.current?.isConnected && !collectionOpener.current.disabled ? collectionOpener.current : savedTrigger.current)?.focus()) }, [])
   const toggleCompare = useCallback((item) => { setCompareIds((current) => current.includes(item.id) ? current.filter((id) => id !== item.id) : current.length < 3 ? [...current, item.id] : current) }, [])
   const openDetailsFromSaved = useCallback((item) => { detailOpener.current = savedTrigger.current; setCollectionPanel(null); setDetailId(item.id) }, [])
@@ -129,7 +138,7 @@ function AtlasPage() {
 
       <main id="contenido" className="page-container main-content">
         <FilterPanel filters={filters} onChange={changeFilters} onReset={resetFilters} activeCount={activeCount} />
-        <div className="discovery-bar"><div className="quick-views" role="group" aria-label="Vistas rápidas">{VISTAS.map((vista) => <button key={vista.key} type="button" className={filters.vista === vista.key ? 'active' : ''} aria-pressed={filters.vista === vista.key} onClick={() => changeFilters((current) => ({ ...current, vista: vista.key }))}>{vista.label}</button>)}</div><label className="sort-field">ORDENAR POR <select aria-label="Ordenar resultados" value={orden} onChange={(event) => setOrden(event.target.value)}><option value="nombre">Nombre</option><option value="cierre">Cierre más próximo</option><option value="pais">País</option><option value="nivel">Nivel</option></select></label></div>
+        <div className="discovery-bar"><div className="quick-views" role="group" aria-label="Vistas rápidas">{VISTAS.map((vista) => <button key={vista.key} type="button" className={`vista-${vista.key}${filters.vista === vista.key ? ' active' : ''}`} aria-pressed={filters.vista === vista.key} onClick={() => changeFilters((current) => ({ ...current, vista: vista.key }))}>{vista.label}</button>)}</div><label className="sort-field">ORDENAR POR <select aria-label="Ordenar resultados" value={orden} onChange={(event) => setOrden(event.target.value)}><option value="nombre">Nombre</option><option value="cierre">Cierre más próximo</option><option value="pais">País</option><option value="nivel">Nivel</option></select></label></div>
         <div className="collection-toolbar" role="group" aria-label="Tu selección"><button ref={savedTrigger} type="button" onClick={(event) => { collectionOpener.current = event.currentTarget; setCollectionPanel('saved') }}><Heart size={17} /> Guardadas <b>{favoritas.length}</b></button><button ref={compareTrigger} type="button" disabled={compareIds.length < 2} onClick={(event) => { collectionOpener.current = event.currentTarget; setCollectionPanel('compare') }}><GitCompareArrows size={17} /> Comparar <b>{compareIds.length}/3</b></button><span>Guarda oportunidades en este navegador y compara hasta tres.</span></div>
         <div className="results-heading"><div><span className="section-kicker">01 / EXPLORAR</span><h2>{selectedCountry ? `Becas en ${selectedCountry}` : 'Oportunidades sin fronteras'}</h2></div><div className="results-indicator" role="status" aria-live="polite" aria-atomic="true"><strong>{filtered.length}</strong><span>{filtered.length === 1 ? 'resultado' : 'resultados'} con tus filtros</span></div></div>
         <div className="mobile-view-switch" role="group" aria-label="Vista de resultados"><button type="button" aria-pressed={mobileView === 'lista'} className={mobileView === 'lista' ? 'active' : ''} onClick={() => setMobileView('lista')}><List size={16} /> Lista</button><button type="button" aria-pressed={mobileView === 'mapa'} className={mobileView === 'mapa' ? 'active' : ''} onClick={() => setMobileView('mapa')}><MapIcon size={16} /> Mapa</button></div>
@@ -137,19 +146,19 @@ function AtlasPage() {
 
           <section className="results-list" aria-label="Resultados de becas">
             <div className="list-head"><span>CONVOCATORIAS</span><span>{String(filtered.length).padStart(2, '0')} EN VISTA</span></div>
-            {filtered.length ? <div className="card-stack">{filtered.map((item, index) => <ScholarshipCard key={item.id} item={item} index={index} selected={selectedId === item.id} onLocate={locateScholarship} onDetails={openDetails} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} onCalendar={descargarIcs} favorite={favoriteIds.has(item.id)} compared={compareIds.includes(item.id)} compareFull={compareFull} calendarEligible={cierreConfirmado(item, IDS_PENDIENTES_REVISION, hoy)} estado={estadoDe(item)} />)}</div> : <div className="empty-state"><MapPinned size={34} strokeWidth={1.4} /><h3>{filters.vista === 'abiertas' ? 'Sin aperturas confirmadas' : filters.vista === 'pronto' ? 'Ningún cierre próximo' : 'Sin coincidencias'}</h3><p>{filters.vista === 'abiertas' || filters.vista === 'pronto' ? 'Prueba otro país o consulta las convocatorias recurrentes. Los plazos se confirman en la fuente oficial.' : 'Prueba otra combinación de país, nivel o cobertura.'}</p><button type="button" onClick={resetFilters}>Limpiar filtros <ArrowRight size={15} /></button></div>}
+            {filtered.length ? <div className="card-stack">{filtered.map((item, index) => <ScholarshipCard key={item.id} item={item} index={index} selected={selectedId === item.id} onLocate={locateScholarship} onDetails={openDetails} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} onCalendar={descargarIcs} favorite={favoriteIds.has(item.id)} compared={compareIds.includes(item.id)} compareFull={compareFull} calendarEligible={cierreConfirmado(item, IDS_PENDIENTES_REVISION, hoy)} estado={estadoVisual(item)} />)}</div> : <div className="empty-state"><MapPinned size={34} strokeWidth={1.4} /><h3>{filters.vista === 'abiertas' ? 'Sin aperturas confirmadas' : filters.vista === 'pronto' ? 'Ningún cierre próximo' : 'Sin coincidencias'}</h3><p>{filters.vista === 'abiertas' || filters.vista === 'pronto' ? 'Prueba otro país o consulta las convocatorias recurrentes. Los plazos se confirman en la fuente oficial.' : 'Prueba otra combinación de país, nivel o cobertura.'}</p><button type="button" onClick={resetFilters}>Limpiar filtros <ArrowRight size={15} /></button></div>}
           </section>
           <section id="mapa" className="map-panel" aria-label="Mapa interactivo de becas">
-            {(!isMobile || mobileView === 'mapa') ? <MapView items={filtered} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={chooseCountry} onScholarshipSelect={setSelectedId} onDetails={openDetails} estadoDe={estadoDe} /> : null}
+            {(!isMobile || mobileView === 'mapa') ? <MapView items={filtered} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={chooseCountry} onScholarshipSelect={setSelectedId} onDetails={openDetails} estadoDe={estadoVisual} /> : null}
             {selectedCountry ? <button className="map-back" type="button" onClick={() => chooseCountry('todos')}><ArrowLeft size={15} /> VER TODOS LOS PAÍSES</button> : null}
           </section>
         </div>
         <section className="destinations"><div className="destinations-head"><span className="section-kicker">02 / DESTINOS</span><h2>Elige una dirección.</h2><p>El conteo corresponde a convocatorias únicas, no al número de plazas disponibles.</p></div><div className="destination-list">{countrySummary.map(([country, count], index) => <button type="button" key={country} onClick={() => { chooseCountry(country); showMap() }}><span className="destination-index">{String(index + 1).padStart(2, '0')}</span><span>{country}</span><b>{count}</b><ArrowRight size={17} /></button>)}</div></section>
         <div className="data-note"><Info size={16} /><span>Corte de verificación más antiguo: {fechaCorta(CORTE)}. Última consulta automatizada: {fechaCorta(ULTIMA_CONSULTA)}.{PENDIENTES_REVISION ? ` ${PENDIENTES_REVISION} fichas requieren revisión manual.` : ''} La vista «Abiertas ahora» exige una fecha de cierre vigente y verificación en los últimos 30 días. “Recurrente” indica un programa periódico; confirma el plazo de cada edición en la fuente oficial. Dos programas de destino múltiple no tienen punto único en el mapa.</span></div>
       </main>
-      {detailItem ? <ScholarshipDetail item={detailItem} estado={estadoDe(detailItem)} onClose={closeDetails} favorite={favoriteIds.has(detailItem.id)} compared={compareIds.includes(detailItem.id)} compareFull={compareFull} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} calendarEligible={cierreConfirmado(detailItem, IDS_PENDIENTES_REVISION, hoy)} onCalendar={descargarIcs} /> : null}
-      {collectionPanel === 'saved' ? <SavedPanel entries={favoritas} byId={BECAS_BY_ID} estadoDe={estadoDe} compareIds={compareIds} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} onOpenDetail={openDetailsFromSaved} onOpenCompare={openCompareFromSaved} onClose={closeCollection} /> : null}
-      {collectionPanel === 'compare' ? <ComparePanel items={compareItems} estadoDe={estadoDe} onRemove={removeCompared} onClose={closeCollection} /> : null}
+      <AnimatePresence onExitComplete={returnDetailFocus}>{detailItem ? <ScholarshipDetail key={detailItem.id} item={detailItem} estado={estadoVisual(detailItem)} onClose={closeDetails} favorite={favoriteIds.has(detailItem.id)} compared={compareIds.includes(detailItem.id)} compareFull={compareFull} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} calendarEligible={cierreConfirmado(detailItem, IDS_PENDIENTES_REVISION, hoy)} onCalendar={descargarIcs} /> : null}</AnimatePresence>
+      {collectionPanel === 'saved' ? <SavedPanel entries={favoritas} byId={BECAS_BY_ID} estadoDe={estadoVisual} compareIds={compareIds} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} onOpenDetail={openDetailsFromSaved} onOpenCompare={openCompareFromSaved} onClose={closeCollection} /> : null}
+      {collectionPanel === 'compare' ? <ComparePanel items={compareItems} estadoDe={estadoVisual} onRemove={removeCompared} onClose={closeCollection} /> : null}
     </>
   )
 }

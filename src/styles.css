@@ -377,3 +377,34 @@ a { color: inherit; }
 .consent-actions button:hover { box-shadow: inset 0 0 0 2px #7D8EA6; }
 @media (max-width: 900px) { .footer-inner { flex-wrap: wrap; justify-content: flex-start; } .analytics-consent { grid-template-columns: 1fr; gap: 10px; } .consent-index { padding-top: 0; } .consent-actions { display: flex; flex-wrap: wrap; } .consent-actions button { flex: 1 1 150px; } }
 @media (max-width: 620px) { .analytics-consent { left: 10px; right: 10px; bottom: 10px; width: calc(100% - 20px); padding: 15px; gap: 8px; max-height: calc(100dvh - 20px); overflow-y: auto; } .consent-body h2 { font-size: 21px; } .consent-body p { font-size: 11px; } .footer-inner { gap: 7px 15px; } }
+
+/* Semáforo de convocatoria: el color se acompaña de texto y forma. */
+:root { --status-soon: #d3561c; --status-closed: #89918d; --status-open: #43cc81; }
+.status { padding: 4px 7px; border: 1px solid transparent; white-space: nowrap; }
+.status i { flex: none; width: 8px; height: 8px; }
+.status-abierta { color: #1A3262; background: rgba(67, 204, 129, .13); border-color: #43cc81; }
+.status-abierta i { background: #43cc81; box-shadow: 0 0 0 2px #F9F9FC; }
+.status-pronto { color: #1A3262; background: rgba(211, 86, 28, .12); border-color: #d3561c; }
+.status-pronto i { background: #d3561c; box-shadow: 0 0 0 2px #F9F9FC; }
+.status-cerrada { color: #282A2D; background: rgba(137, 145, 141, .18); border-color: #89918d; }
+.status-cerrada i { background: #89918d; box-shadow: 0 0 0 2px #F9F9FC; }
+.quick-views .vista-pronto.active { box-shadow: inset 0 -4px #d3561c; }
+.popup-eyebrow-abierta, .popup-eyebrow-pronto, .popup-eyebrow-cerrada { padding-left: 8px; color: #1A3262; }
+.popup-eyebrow-abierta { border-left: 4px solid #43cc81; }
+.popup-eyebrow-pronto { border-left: 4px solid #d3561c; }
+.popup-eyebrow-cerrada { border-left: 4px solid #89918d; }
+.card-detail-link { transition: color .22s ease, text-underline-offset .22s ease; }
+.card-detail-link svg, .popup-details, .detail-footer a { transition: transform .24s cubic-bezier(.22, 1, .36, 1), background-color .24s ease, color .24s ease; }
+.card-detail-link:hover, .card-detail-link:focus-visible { color: #1A3262; text-underline-offset: 6px; }
+.card-detail-link:hover svg, .card-detail-link:focus-visible svg { transform: translate(3px, -3px); }
+.popup-details:hover, .popup-details:focus-visible, .detail-footer a:hover, .detail-footer a:focus-visible { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .card-detail-link, .card-detail-link svg, .popup-details, .detail-footer a { transition: none !important; } .card-detail-link:hover svg, .card-detail-link:focus-visible svg, .popup-details:hover, .popup-details:focus-visible, .detail-footer a:hover, .detail-footer a:focus-visible { transform: none; } }
+
+/* Marcadores de becas al acercarse a un país */
+.atlas-marker-scholarship.atlas-marker-abierta span { background: #43cc81; color: #1A3262; }
+.atlas-marker-scholarship.atlas-marker-pronto span { background: #d3561c; color: #F9F9FC; }
+.atlas-marker-scholarship.atlas-marker-cerrada span { background: #89918d; color: #282A2D; }
+.map-legend .legend-open { background: #43cc81; }
+.map-legend .legend-soon { background: #d3561c; }
+.map-legend .legend-closed { background: #89918d; }
+.map-legend .legend-other { background: #344D7D; }
