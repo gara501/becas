@@ -13,6 +13,7 @@ BASE = ROOT / "data" / "fase4" / "becas_limpias_geocodificadas.csv"
 UPDATED = ROOT / "data" / "actualizaciones" / "becas_actualizadas.csv"
 SOURCE = UPDATED if UPDATED.exists() else BASE
 REPORT = ROOT / "data" / "actualizaciones" / "resumen.json"
+AUDIT = ROOT / "data" / "actualizaciones" / "ultima_consulta.csv"
 GEO_SOURCE = ROOT / "data" / "fase4" / "geocodigos_aprobados.csv"
 DATA_DIR = ROOT / "src" / "data"
 
@@ -24,10 +25,13 @@ assert len(rows) == len({row["id"] for row in rows})
 assert all(row["url_oficial"].startswith("https://") for row in rows)
 assert all(row["fecha_ultima_verificacion"] for row in rows)
 report = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() and SOURCE == UPDATED else {}
+with AUDIT.open(encoding="utf-8-sig", newline="") as file:
+    pending_ids = [row["id"] for row in csv.DictReader(file) if row["requiere_revision"] == "Sí"] if SOURCE == UPDATED else []
 metadata = {
     "fecha_corte_verificado": min(row["fecha_ultima_verificacion"] for row in rows),
     "fecha_ultima_consulta": report.get("fecha_ejecucion", "2026-09-30"),
-    "pendientes_revision": report.get("pendientes_revision", 0),
+    "pendientes_revision": len(pending_ids),
+    "ids_pendientes_revision": pending_ids,
 }
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 (DATA_DIR / "becas.json").write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

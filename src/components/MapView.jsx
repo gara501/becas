@@ -64,12 +64,12 @@ function clusterIcon(cluster) {
   return L.divIcon({ className: 'atlas-cluster', html: `<span>${count}</span>`, iconSize: [58, 58], iconAnchor: [29, 29] })
 }
 
-function popupContent(item) {
+function popupContent(item, estado) {
   const wrap = document.createElement('div')
   wrap.className = 'atlas-popup'
   const eyebrow = document.createElement('div')
   eyebrow.className = 'popup-eyebrow'
-  eyebrow.textContent = `${item.pais_destino} / ${item.estado_convocatoria.toUpperCase()}`
+  eyebrow.textContent = `${item.pais_destino} / ${estado.etiqueta.toUpperCase()}`
   const heading = document.createElement('h3')
   heading.textContent = item.nombre
   const description = document.createElement('p')
@@ -85,11 +85,15 @@ function popupContent(item) {
   link.target = '_blank'
   link.rel = 'noopener noreferrer'
   link.textContent = 'VER CONVOCATORIA OFICIAL ↗'
-  wrap.append(eyebrow, heading, description, cover, date, link)
+  const verified = document.createElement('p')
+  verified.textContent = `Verificada: ${fechaCorta(item.fecha_ultima_verificacion)}`
+  wrap.append(eyebrow, heading, description, cover, date, verified)
+  if (estado.pendiente) { const warning = document.createElement('p'); warning.className = 'popup-warning'; warning.textContent = 'Revisión pendiente: confirma el plazo en la fuente oficial.'; wrap.append(warning) }
+  wrap.append(link)
   return wrap
 }
 
-function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect }) {
+function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, estadoDe }) {
   const map = useMap()
   const layers = useRef(null)
   const markers = useRef(new Map())
@@ -118,7 +122,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
         const marker = L.marker([Number(item.latitud), Number(item.longitud)], {
           icon: bubbleIcon('•', 'scholarship'), scholarshipCount: 1, title: item.nombre,
         })
-        marker.bindPopup(popupContent(item), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
+        marker.bindPopup(popupContent(item, estadoDe(item)), { maxWidth: 310, minWidth: 255, autoPanPadding: [24, 24] })
         marker.on('click', () => onScholarshipSelect(item.id))
         group.addLayer(marker)
         nextMarkers.set(item.id, marker)
@@ -146,7 +150,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
       layers.current = null
       markers.current = new Map()
     }
-  }, [map, items, selectedCountry, onCountrySelect, onScholarshipSelect])
+  }, [map, items, selectedCountry, onCountrySelect, onScholarshipSelect, estadoDe])
 
   useEffect(() => {
     if (!selectedId || !selectedCountry || !layers.current) return
@@ -157,7 +161,7 @@ function MapContent({ items, selectedCountry, selectedId, onCountrySelect, onSch
   return null
 }
 
-export default function MapView({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect }) {
+export default function MapView({ items, selectedCountry, selectedId, onCountrySelect, onScholarshipSelect, estadoDe }) {
   const offMapCount = useMemo(() => items.filter((item) => item.latitud === DESCONOCIDO).length, [items])
   const mapCounts = useMemo(() => {
     const counts = new Map()
@@ -176,7 +180,7 @@ export default function MapView({ items, selectedCountry, selectedId, onCountryS
       <MapContainer center={INITIAL_CENTER} zoom={INITIAL_ZOOM} minZoom={2} maxZoom={10} zoomControl={false} scrollWheelZoom={false} className="map-canvas" preferCanvas>
         <GeoJSON data={WORLD} style={countryStyle} attribution={'Límites: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · Coordenadas: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'} />
         <ZoomControl position="bottomright" />
-        <MapContent items={items} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={onCountrySelect} onScholarshipSelect={onScholarshipSelect} />
+        <MapContent items={items} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={onCountrySelect} onScholarshipSelect={onScholarshipSelect} estadoDe={estadoDe} />
       </MapContainer>
       <div className="map-topbar"><span className="map-live-dot" /> {selectedCountry ? `VISTA · ${selectedCountry.toUpperCase()}` : 'VISTA MUNDIAL · PAÍSES'}</div>
       {offMapCount > 0 ? <div className="map-unplaced">{offMapCount} {offMapCount === 1 ? 'beca sin punto único' : 'becas sin punto único'} · visibles en la lista</div> : null}

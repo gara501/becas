@@ -5,9 +5,11 @@ import { motion } from 'motion/react'
 import FilterPanel from './components/FilterPanel.jsx'
 import MapView from './components/MapView.jsx'
 import ScholarshipCard from './components/ScholarshipCard.jsx'
-import { BECAS, CORTE, DESCONOCIDO, PENDIENTES_REVISION, ULTIMA_CONSULTA, filtrarBecas, fechaCorta, resumenPais } from './data/catalogo.js'
+import { BECAS, CORTE, DESCONOCIDO, IDS_PENDIENTES_REVISION, PENDIENTES_REVISION, ULTIMA_CONSULTA, filtrarBecas, fechaCorta, resumenPais } from './data/catalogo.js'
+import { cierraPronto, estadoVigente, fechaHoyColombia, ordenarBecas } from './data/vigencia.js'
 
-const DEFAULT_FILTERS = { busqueda: '', pais: 'todos', nivel: 'todos', area: 'todas', cobertura: 'todas', estado: 'todos', mes: 'todos' }
+const DEFAULT_FILTERS = { busqueda: '', pais: 'todos', nivel: 'todos', area: 'todas', cobertura: 'todas', estado: 'todos', mes: 'todos', vista: 'todas' }
+const VISTAS = [{ key: 'todas', label: 'Todas' }, { key: 'abiertas', label: 'Abiertas ahora' }, { key: 'pronto', label: 'Cierran pronto' }, { key: 'recurrentes', label: 'Recurrentes' }]
 const EXCLUSIONES = [
   { name: 'Australia Awards', reason: 'Colombia no figura entre los países participantes.', url: 'https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries' },
   { name: 'GREAT Scholarships 2026/27', reason: 'La lista de países de esta edición no incluye Colombia.', url: 'https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships' },
@@ -42,13 +44,16 @@ function Footer() {
 function AtlasPage() {
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [selectedId, setSelectedId] = useState(null)
-  const filtered = useMemo(() => filtrarBecas(BECAS, filters), [filters])
+  const [orden, setOrden] = useState('nombre')
+  const hoy = fechaHoyColombia()
+  const estadoDe = useCallback((item) => estadoVigente(item, IDS_PENDIENTES_REVISION, hoy), [hoy])
+  const filtered = useMemo(() => ordenarBecas(filtrarBecas(BECAS, filters, estadoDe).filter((item) => filters.vista === 'todas' || (filters.vista === 'abiertas' && estadoDe(item).clave === 'abierta') || (filters.vista === 'pronto' && cierraPronto(item, IDS_PENDIENTES_REVISION, hoy)) || (filters.vista === 'recurrentes' && estadoDe(item).clave === 'recurrente')), orden), [filters, estadoDe, hoy, orden])
   const selectedCountry = filters.pais === 'todos' ? null : filters.pais
   const countrySummary = useMemo(() => resumenPais(BECAS).filter(([country]) => country !== 'Varios'), [])
   const activeCount = Object.entries(filters).filter(([key, value]) => value !== DEFAULT_FILTERS[key]).length
-  const openTotal = BECAS.filter((item) => item.estado_convocatoria === 'abierta').length
+  const openTotal = BECAS.filter((item) => estadoDe(item).clave === 'abierta').length
   const changeFilters = useCallback((updater) => { setFilters(updater); setSelectedId(null) }, [])
-  const resetFilters = useCallback(() => { setFilters(DEFAULT_FILTERS); setSelectedId(null) }, [])
+  const resetFilters = useCallback(() => { setFilters(DEFAULT_FILTERS); setOrden('nombre'); setSelectedId(null) }, [])
   const chooseCountry = useCallback((country) => {
     setFilters((current) => ({ ...current, pais: country }))
     setSelectedId(null)
@@ -71,26 +76,27 @@ function AtlasPage() {
         <div className="hero-aside" aria-label="Resumen de la base de datos">
           <div className="aside-head"><Globe2 size={18} /> PANORAMA / {CORTE.replaceAll('-', '.')}</div>
           <div className="big-stat"><strong>{BECAS.length}</strong><span>OPORTUNIDADES<br />DOCUMENTADAS</span></div>
-          <div className="stat-row"><span><b>{countrySummary.length}</b> países de destino</span><span><b>{openTotal}</b> abiertas al corte</span></div>
+          <div className="stat-row"><span><b>{countrySummary.length}</b> países de destino</span><span><b>{openTotal}</b> abiertas confirmadas hoy</span></div>
           <div className="aside-bottom">DATOS CON TRAZABILIDAD <ShieldCheck size={16} /></div>
         </div>
       </div></section>
 
       <main className="page-container main-content">
         <FilterPanel filters={filters} onChange={changeFilters} onReset={resetFilters} activeCount={activeCount} />
+        <div className="discovery-bar"><div className="quick-views" role="group" aria-label="Vistas rápidas">{VISTAS.map((vista) => <button key={vista.key} type="button" className={filters.vista === vista.key ? 'active' : ''} aria-pressed={filters.vista === vista.key} onClick={() => changeFilters((current) => ({ ...current, vista: vista.key }))}>{vista.label}</button>)}</div><label className="sort-field">ORDENAR POR <select aria-label="Ordenar resultados" value={orden} onChange={(event) => setOrden(event.target.value)}><option value="nombre">Nombre</option><option value="cierre">Cierre más próximo</option><option value="pais">País</option><option value="nivel">Nivel</option></select></label></div>
         <div className="results-heading"><div><span className="section-kicker">01 / EXPLORAR</span><h2>{selectedCountry ? `Becas en ${selectedCountry}` : 'Oportunidades sin fronteras'}</h2></div><div className="results-indicator"><strong>{filtered.length}</strong><span>{filtered.length === 1 ? 'resultado' : 'resultados'} con tus filtros</span></div></div>
         <div className="explorer-grid">
           <section className="results-list" aria-label="Resultados de becas">
             <div className="list-head"><span>CONVOCATORIAS</span><span>{String(filtered.length).padStart(2, '0')} EN VISTA</span></div>
-            {filtered.length ? <div className="card-stack">{filtered.map((item, index) => <ScholarshipCard key={item.id} item={item} index={index} selected={selectedId === item.id} onLocate={locateScholarship} />)}</div> : <div className="empty-state"><MapPinned size={34} strokeWidth={1.4} /><h3>Sin coincidencias</h3><p>Prueba otra combinación de país, nivel o cobertura.</p><button type="button" onClick={resetFilters}>Limpiar filtros <ArrowRight size={15} /></button></div>}
+            {filtered.length ? <div className="card-stack">{filtered.map((item, index) => <ScholarshipCard key={item.id} item={item} index={index} selected={selectedId === item.id} onLocate={locateScholarship} estado={estadoDe(item)} />)}</div> : <div className="empty-state"><MapPinned size={34} strokeWidth={1.4} /><h3>Sin coincidencias</h3><p>Prueba otra combinación de país, nivel o cobertura.</p><button type="button" onClick={resetFilters}>Limpiar filtros <ArrowRight size={15} /></button></div>}
           </section>
           <section id="mapa" className="map-panel" aria-label="Mapa interactivo de becas">
-            <MapView items={filtered} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={chooseCountry} onScholarshipSelect={setSelectedId} />
+            <MapView items={filtered} selectedCountry={selectedCountry} selectedId={selectedId} onCountrySelect={chooseCountry} onScholarshipSelect={setSelectedId} estadoDe={estadoDe} />
             {selectedCountry ? <button className="map-back" type="button" onClick={() => chooseCountry('todos')}><ArrowLeft size={15} /> VER TODOS LOS PAÍSES</button> : null}
           </section>
         </div>
         <section className="destinations"><div className="destinations-head"><span className="section-kicker">02 / DESTINOS</span><h2>Elige una dirección.</h2><p>El conteo corresponde a convocatorias únicas, no al número de plazas disponibles.</p></div><div className="destination-list">{countrySummary.map(([country, count], index) => <button type="button" key={country} onClick={() => { chooseCountry(country); document.getElementById('mapa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}><span className="destination-index">{String(index + 1).padStart(2, '0')}</span><span>{country}</span><b>{count}</b><ArrowRight size={17} /></button>)}</div></section>
-        <div className="data-note"><Info size={16} /><span>Corte de verificación más antiguo: {fechaCorta(CORTE)}. Última consulta automatizada: {fechaCorta(ULTIMA_CONSULTA)}.{PENDIENTES_REVISION ? ` ${PENDIENTES_REVISION} fichas requieren revisión manual.` : ''} “Recurrente” indica un programa periódico; confirma el plazo de cada edición en la fuente oficial. Dos programas de destino múltiple no tienen punto único en el mapa.</span></div>
+        <div className="data-note"><Info size={16} /><span>Corte de verificación más antiguo: {fechaCorta(CORTE)}. Última consulta automatizada: {fechaCorta(ULTIMA_CONSULTA)}.{PENDIENTES_REVISION ? ` ${PENDIENTES_REVISION} fichas requieren revisión manual.` : ''} La vista «Abiertas ahora» exige una fecha de cierre vigente y verificación en los últimos 30 días. “Recurrente” indica un programa periódico; confirma el plazo de cada edición en la fuente oficial. Dos programas de destino múltiple no tienen punto único en el mapa.</span></div>
       </main>
     </>
   )

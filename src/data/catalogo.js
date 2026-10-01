@@ -7,6 +7,7 @@ export const GEOCODIGOS = places
 export const CORTE = metadata.fecha_corte_verificado
 export const ULTIMA_CONSULTA = metadata.fecha_ultima_consulta
 export const PENDIENTES_REVISION = metadata.pendientes_revision
+export const IDS_PENDIENTES_REVISION = metadata.ids_pendientes_revision || []
 export const DESCONOCIDO = 'No verificado'
 
 export const NIVELES = ['pregrado', 'maestría', 'doctorado', 'postdoctorado', 'idiomas', 'curso corto', 'intercambio']
@@ -60,14 +61,14 @@ export function tieneCobertura(item, tipo) {
   return false
 }
 
-export function filtrarBecas(items, filters) {
+export function filtrarBecas(items, filters, estadoDe) {
   const query = normalizar(filters.busqueda.trim())
   return items.filter((item) => {
     if (filters.pais !== 'todos' && item.pais_destino !== filters.pais) return false
     if (filters.nivel !== 'todos' && !item.nivel.split(';').map((n) => n.trim()).includes(filters.nivel)) return false
     if (filters.area !== 'todas' && categoriaArea(item) !== filters.area) return false
     if (!tieneCobertura(item, filters.cobertura)) return false
-    if (filters.estado !== 'todos' && item.estado_convocatoria !== filters.estado) return false
+    if (filters.estado !== 'todos' && (estadoDe ? estadoDe(item).clave : item.estado_convocatoria) !== filters.estado) return false
     if (filters.mes !== 'todos' && (!/^\d{4}-\d{2}-\d{2}$/.test(item.fecha_cierre) || item.fecha_cierre.slice(5, 7) !== filters.mes)) return false
     if (query && !normalizar([item.nombre, item.entidad_oferente, item.pais_destino, item.area_conocimiento, item.universidad].join(' ')).includes(query)) return false
     return true

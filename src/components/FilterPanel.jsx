@@ -46,6 +46,8 @@ export default function FilterPanel({ filters, onChange, onReset, activeCount })
           <option value="abierta">Abierta</option>
           <option value="cerrada">Cerrada</option>
           <option value="recurrente">Recurrente</option>
+          <option value="proxima">Próxima apertura</option>
+          <option value="pendiente">Por confirmar</option>
         </SelectField>
         <SelectField label="CIERRE" value={filters.mes} onChange={change('mes')}>
           <option value="todos">Todos los meses</option>

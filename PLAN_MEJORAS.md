@@ -24,7 +24,7 @@ S = pequeño; M = mediano. Son tamaños relativos, no promesas de duración.
 
 **Alcance:** M1–M4. Revisar primero fuentes pendientes, distinguir «fecha verificada» de «fecha calculada» y evitar llamar «abierta ahora» a una convocatoria cuya edición actual no está confirmada. Añadir accesos rápidos y ordenamiento sin perder los filtros existentes.
 
-**Entrega:** fichas con fecha y estado claros; accesos rápidos que actualizan lista, mapa y conteos a la vez.
+**Entrega implementada (2026-09-30):** fichas con fecha y estado claros; accesos rápidos que actualizan lista, mapa y conteos a la vez. Revisión de 14 fichas documentada en `REVISION_ETAPA1.md`; 2 continúan pendientes.
 
 **Aceptación:** una fecha vencida no aparece como abierta; las fichas pendientes se identifican sin abrir la fuente; los filtros y el orden funcionan en escritorio y móvil. Se documentan las fichas que siguen sin respuesta oficial.
 
