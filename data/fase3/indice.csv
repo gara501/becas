@@ -1,0 +1,19 @@
+﻿pais_destino,archivo,becas,abiertas,cerradas,recurrentes,fecha_consulta
+Alemania,alemania.csv,6,1,4,1,2026-09-30
+Australia,australia.csv,3,2,0,1,2026-09-30
+Canadá,canada.csv,3,0,1,2,2026-09-30
+Chile,chile.csv,1,1,0,0,2026-09-30
+China,china.csv,3,0,3,0,2026-09-30
+Colombia,colombia.csv,6,1,5,0,2026-09-30
+Corea del Sur,corea_del_sur.csv,2,0,2,0,2026-09-30
+España,espana.csv,3,1,2,0,2026-09-30
+Estados Unidos,estados_unidos.csv,3,1,2,0,2026-09-30
+Francia,francia.csv,2,0,1,1,2026-09-30
+India,india.csv,1,1,0,0,2026-09-30
+Japón,japon.csv,2,0,2,0,2026-09-30
+México,mexico.csv,1,1,0,0,2026-09-30
+Países Bajos,paises_bajos.csv,2,0,0,2,2026-09-30
+Reino Unido,reino_unido.csv,2,2,0,0,2026-09-30
+Singapur,singapur.csv,1,1,0,0,2026-09-30
+Suecia,suecia.csv,3,0,3,0,2026-09-30
+Varios,varios_destinos.csv,2,0,0,2,2026-09-30

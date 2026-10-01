@@ -1,0 +1,30 @@
+﻿clave_lugar,nivel,nombre_consultado,pais_destino,latitud,longitud,tipo_osm,id_osm,url_osm,nombre_osm,categoria_osm,fecha_consulta,fuente
+ciudad|Australia|Melbourne,ciudad,Melbourne,Australia,-37.8142454,144.9631732,relation,4246124,https://www.openstreetmap.org/relation/4246124,Melbourne,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|Australia|Sídney,ciudad,Sídney,Australia,-33.8698439,151.2082848,relation,5750005,https://www.openstreetmap.org/relation/5750005,Sydney,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|Colombia|Bogotá,ciudad,Bogotá,Colombia,4.6533817,-74.0836331,relation,7426387,https://www.openstreetmap.org/relation/7426387,Bogota,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+ciudad|España|Madrid,ciudad,Madrid,España,40.4167820,-3.7035070,relation,5326784,https://www.openstreetmap.org/relation/5326784,Madrid,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+ciudad|India|Mohali,ciudad,Mohali,India,30.6908804,76.7114879,node,125904109,https://www.openstreetmap.org/node/125904109,Mohali,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|México|Monterrey,ciudad,Monterrey,México,25.6802019,-100.3152580,node,4145210488,https://www.openstreetmap.org/node/4145210488,Monterrey,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|Países Bajos|Maastricht,ciudad,Maastricht,Países Bajos,50.8579855,5.6969882,relation,2078291,https://www.openstreetmap.org/relation/2078291,Maastricht,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+ciudad|Reino Unido|Salford,ciudad,Salford,Reino Unido,53.4877463,-2.2891921,node,26867312,https://www.openstreetmap.org/node/26867312,Salford,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|Singapur|Singapur,ciudad,Singapur,Singapur,1.2899175,103.8519072,relation,17140517,https://www.openstreetmap.org/relation/17140517,Singapore,place/city,2026-09-30,OpenStreetMap Nominatim
+ciudad|Suecia|Lund,ciudad,Lund,Suecia,55.7029296,13.1929449,relation,2468628,https://www.openstreetmap.org/relation/2468628,Lund,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Alemania,pais,Alemania,Alemania,51.1638175,10.4478313,relation,51477,https://www.openstreetmap.org/relation/51477,Germany,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Australia,pais,Australia,Australia,-24.7761086,134.7550000,relation,80500,https://www.openstreetmap.org/relation/80500,Australia,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Canadá,pais,Canadá,Canadá,61.0666922,-107.9917070,relation,1428125,https://www.openstreetmap.org/relation/1428125,Canada,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Chile,pais,Chile,Chile,-31.7613365,-71.3187697,relation,167454,https://www.openstreetmap.org/relation/167454,Chile,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|China,pais,China,China,34.5412252,108.9237067,relation,270056,https://www.openstreetmap.org/relation/270056,China,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Colombia,pais,Colombia,Colombia,4.0999170,-72.9088133,relation,120027,https://www.openstreetmap.org/relation/120027,Colombia,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Corea del Sur,pais,Corea del Sur,Corea del Sur,36.6383920,127.6961188,relation,307756,https://www.openstreetmap.org/relation/307756,South Korea,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|España,pais,España,España,39.3260685,-4.8379791,relation,1311341,https://www.openstreetmap.org/relation/1311341,Spain,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Estados Unidos,pais,Estados Unidos,Estados Unidos,39.7837304,-100.4458820,relation,148838,https://www.openstreetmap.org/relation/148838,United States,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Francia,pais,Francia,Francia,46.6033540,1.8883335,relation,2202162,https://www.openstreetmap.org/relation/2202162,France,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|India,pais,India,India,22.3511148,78.6677428,relation,304716,https://www.openstreetmap.org/relation/304716,India,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Japón,pais,Japón,Japón,36.5748441,139.2394179,relation,382313,https://www.openstreetmap.org/relation/382313,Japan,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|México,pais,México,México,23.6585116,-102.0077097,relation,114686,https://www.openstreetmap.org/relation/114686,Mexico,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Países Bajos,pais,Países Bajos,Países Bajos,52.2434979,5.6343227,relation,2323309,https://www.openstreetmap.org/relation/2323309,Netherlands,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Reino Unido,pais,Reino Unido,Reino Unido,54.7023545,-3.2765753,relation,62149,https://www.openstreetmap.org/relation/62149,United Kingdom,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Singapur,pais,Singapur,Singapur,1.3571070,103.8194992,relation,536780,https://www.openstreetmap.org/relation/536780,Singapore,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+pais|Suecia,pais,Suecia,Suecia,59.6749712,14.5208584,relation,52822,https://www.openstreetmap.org/relation/52822,Sweden,boundary/administrative,2026-09-30,OpenStreetMap Nominatim
+universidad|Colombia|Universidad de los Andes,universidad,Universidad de los Andes,Colombia,4.6014026,-74.0649050,relation,12923963,https://www.openstreetmap.org/relation/12923963,Universidad de los Andes,amenity/university,2026-09-30,OpenStreetMap Nominatim
+universidad|México|Tecnológico de Monterrey,universidad,Tecnológico de Monterrey,México,25.6507267,-100.2893190,relation,21104322,https://www.openstreetmap.org/relation/21104322,Tecnológico de Monterrey,amenity/university,2026-09-30,OpenStreetMap Nominatim

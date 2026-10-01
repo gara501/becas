@@ -1,0 +1,308 @@
+{
+  "https://www.daad.co/files/2026/02/DAAD_COLFUTURO_Convocatoria-2026-1.pdf": {
+    "sha256": "28775aa116847df54d0633a3019819026ecb2c3e420d180e7812e1958c86a781",
+    "etag": "",
+    "last_modified": "Thu, 12 Feb 2026 13:50:34 GMT",
+    "format": "pdf",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.daad.co/files/2026/02/DAAD_COLFUTURO_Convocatoria-2026-1.pdf",
+    "status": 304
+  },
+  "https://www.daad.co/es/becas-2/becas-de-posgrado/maestria/": {
+    "sha256": "88a4585a2471849b0cd07b28a586e88f37d1d7a0ba3322c58024d641adc703d6",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.daad.co/es/becas-2/becas-de-posgrado/maestria/",
+    "status": 200
+  },
+  "https://www.daad.co/es/becas/becas-de-posgrado/maestria-2/": {
+    "sha256": "22e19d29b8c4b08951fe911c32befbd9d21fd50b757e0e02df6c606994d9b43f",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.daad.co/es/becas/becas-de-posgrado/maestria-2/",
+    "status": 200
+  },
+  "https://nserc.canada.ca/en/funding-opportunity/canada-graduate-research-scholarship-doctoral-program": {
+    "sha256": "5a0b54b87ad389c2fbb69e8230ca067195218a1117bc301a6890a5bd285dbe26",
+    "etag": "\"1790817827\"",
+    "last_modified": "Thu, 01 Oct 2026 01:23:47 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://nserc.canada.ca/en/funding-opportunity/canada-graduate-research-scholarship-doctoral-program",
+    "status": 200
+  },
+  "https://www.educanada.ca/scholarships-bourses/can/institutions/elap-pfla.aspx?lang=eng": {
+    "sha256": "3af7d66ae091fea265d026d096e8f4492f6fda5c0dc8edc8a2b780aa8182dc05",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.educanada.ca/scholarships-bourses/can/institutions/elap-pfla.aspx?lang=eng",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027": {
+    "sha256": "4b80a160c78a1c8c474f1084f3956630ce3667bdafec5502e049e3d4afc4a3bb",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/nov-2025-maestrias-en-diferentes-areas-en-china": {
+    "sha256": "aa4a1dd1ebf99f65fb700cace196246ffce49a0b8670f39cd44e2563d4d3778c",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/nov-2025-maestrias-en-diferentes-areas-en-china",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/-/becas-mofcom-csc-maestrias-doctorados-china": {
+    "sha256": "73f6869aa69aaa8ad8397917f3392a058ab51234ef5c5162ee0c600442e65547",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/-/becas-mofcom-csc-maestrias-doctorados-china",
+    "status": 200
+  },
+  "https://minciencias.gov.co/convocatorias/convocatoria-becas-para-el-cambio-formacion-en-maestrias-y-doctorados-region-pacifico": {
+    "sha256": "9ab6c2b628e2d4110a7cbdc9d3acaf99a8db30732040198e54f7f2d0c737b8ac",
+    "etag": "\"1790820935-0\"",
+    "last_modified": "Thu, 01 Oct 2026 02:15:35 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://minciencias.gov.co/convocatorias/convocatoria-becas-para-el-cambio-formacion-en-maestrias-y-doctorados-region-pacifico",
+    "status": 200
+  },
+  "https://minciencias.gov.co/convocatorias/convocatoria-becas-para-el-cambio-formacion-en-maestrias-y-doctorados": {
+    "sha256": "7e7e30440edd215341b10b89516cae2715afa2bba5533a83d73b6dbe93b05a9f",
+    "etag": "\"1790820937-0\"",
+    "last_modified": "Thu, 01 Oct 2026 02:15:37 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://minciencias.gov.co/convocatorias/convocatoria-becas-para-el-cambio-formacion-en-maestrias-y-doctorados",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/llega-nueva-convocatoria-fondo-comunidades-negras-que-otorga-credito-100-condonable-estudios-educacion-superior": {
+    "sha256": "1ad3e729b6a0cbf45dfc5bc5bdd03e55af1de8a4e7692ec619ac848122b42126",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/llega-nueva-convocatoria-fondo-comunidades-negras-que-otorga-credito-100-condonable-estudios-educacion-superior",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/este-23-julio-abre-nueva-convocatoria-fondo-alvaro-ulcue-chocue-miembros-pueblos-indigenas": {
+    "sha256": "fb41b4ccc1669dc969c45a9c8dd296fbe6c8698d3c14765681c2fddf1d7643d9",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/este-23-julio-abre-nueva-convocatoria-fondo-alvaro-ulcue-chocue-miembros-pueblos-indigenas",
+    "status": 200
+  },
+  "https://apoyofinanciero.uniandes.edu.co/quiero-estudiar": {
+    "sha256": "c9919cf91087f8a7b7b125004cb7ea3f135fbddba8802b8977d57c52347d9ac0",
+    "etag": "",
+    "last_modified": "Thu, 01 Oct 2026 01:09:24 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://apoyofinanciero.uniandes.edu.co/quiero-estudiar",
+    "status": 200
+  },
+  "https://overseas.mofa.go.kr/co-es/brd/m_6687/view.do?seq=760696": {
+    "sha256": "1da14854e93eec6336814cdd20f0d7bfe5bef34b42ffcb3052ea118f871399d7",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://overseas.mofa.go.kr/co-es/brd/m_6687/view.do?seq=760696",
+    "status": 200
+  },
+  "https://gestion.fundacioncarolina.es/programas/6519": {
+    "sha256": "7eb94ef2490952c6aaad14ce687e7f6428ec7389773bad9c26e1b96565e9af34",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://gestion.fundacioncarolina.es/programas/6519",
+    "status": 200
+  },
+  "https://www.fundacioncarolina.es/convocatoria-de-becas-2026-2027/": {
+    "sha256": "cfb903468f4500c178e478b999b545bc91c861944907918957d27cf1ef1b8343",
+    "etag": "\"4c8a14ba62d2a073ea2c0776f40a30d4\"",
+    "last_modified": "Thu, 01 Oct 2026 02:15:55 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.fundacioncarolina.es/convocatoria-de-becas-2026-2027/",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/2026-becas-85-maestria-negocios-digitales-urjc": {
+    "sha256": "9d67d003e6224cd2d0d457b0bcddd2b9700a35c37c1275633744a9ce533b77d7",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/2026-becas-85-maestria-negocios-digitales-urjc",
+    "status": 200
+  },
+  "https://fulbright.edu.co/portfolio-academico/fulbright-visiting-scholar-program-2/": {
+    "sha256": "fb9ad69ce1200dc10047ef4cba7dc9acfe1c833374f8d8293a2d1a00e2ceda5d",
+    "etag": "\"3420-1790745868;gz\"",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://fulbright.edu.co/portfolio-academico/fulbright-visiting-scholar-program-2/",
+    "status": 200
+  },
+  "https://fulbright.edu.co/portfolio-academico/hubert-h-humphrey-fellowship-program/": {
+    "sha256": "3524270462c9c74ffbace636540db1f1dc93eb0bd4d3ef182f61ea8f0a7aab38",
+    "etag": "\"3425-1790746502;gz\"",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://fulbright.edu.co/portfolio-academico/hubert-h-humphrey-fellowship-program/",
+    "status": 200
+  },
+  "https://fulbright.edu.co/portfolio-academico/j-william-fulbright-program/": {
+    "sha256": "c9e3df9e3d441eac676fe49e3e54d3257df11c4fecd4200ca747f52878db2d26",
+    "etag": "\"3421-1790745911;gz\"",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://fulbright.edu.co/portfolio-academico/j-william-fulbright-program/",
+    "status": 200
+  },
+  "https://www.colombie.campusfrance.org/el-programa-de-becas-de-francia-excelencia-eiffel": {
+    "sha256": "0ad6def44486bd044e0a5172a594fe25deb3ca5920e2c00776f26244c67cf017",
+    "etag": "W/\"1790817599\"",
+    "last_modified": "Thu, 01 Oct 2026 01:19:59 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.colombie.campusfrance.org/el-programa-de-becas-de-francia-excelencia-eiffel",
+    "status": 200
+  },
+  "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/emile-boutmy-scholarship/": {
+    "sha256": "677f353a7200286e7e4b707c1aa99fef417c32997f391da30a211decf3bffcb2",
+    "etag": "\"6abcd566-7a63f\"",
+    "last_modified": "Wed, 30 Sep 2026 09:24:54 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/emile-boutmy-scholarship/",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/ia-trabajo-mujeres-gobierno-india": {
+    "sha256": "1b4cc2417bf7bd98199fce034d9442bbbe05a07a46ef4ae0b11ebc7ad0761fd5",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/ia-trabajo-mujeres-gobierno-india",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/2026-becas-del-100-doctorado-en-politica-publica-en-el-instituto-tecnologico-y-de-estudios-superiores-de-monterrey": {
+    "sha256": "e2201b9544a8ed7f9d40a719ed3259efdf5098fb1d6677f31bab4ba234d24c8e",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/2026-becas-del-100-doctorado-en-politica-publica-en-el-instituto-tecnologico-y-de-estudios-superiores-de-monterrey",
+    "status": 200
+  },
+  "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/maastricht-university-nl-high": {
+    "sha256": "393d367032c95f6cfc321e9b07a3d0805ea221f047ce4d782538967efa9021a1",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/maastricht-university-nl-high",
+    "status": 200
+  },
+  "https://studyinnl.org/finances/nl-scholarship": {
+    "sha256": "e85c6d0745bea7e3ecdee48f5995dac5785c42a0e08040c601f1fe54e34485e7",
+    "etag": "\"1790786653\"",
+    "last_modified": "Wed, 30 Sep 2026 16:44:13 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://studyinnl.org/finances/nl-scholarship",
+    "status": 200
+  },
+  "https://www.chevening.org/scholarship/colombia/": {
+    "sha256": "16138bc0dc49bcf06c369fc895adeb4a6d5b77242e4cf517f0224ab5860eeac8",
+    "etag": "\"3c71b4575d2ed409493501d2f27f581e\"",
+    "last_modified": "Thu, 01 Oct 2026 02:16:06 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.chevening.org/scholarship/colombia/",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/descuentos-maestrias-university-salford": {
+    "sha256": "11307efd2d3dde08bc52748972828900dff82cd6de1e43053ae015e3a82ce163",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/descuentos-maestrias-university-salford",
+    "status": 200
+  },
+  "https://web.icetex.gov.co/es/-/2026-beca-del-100-servidores-publicos-singapur-inclusivity-in-multicultural-societies": {
+    "sha256": "b4e5f2783cd89c014649bb0107e11ae77bf10110e3d54906f020d2d82a698361",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://web.icetex.gov.co/es/-/2026-beca-del-100-servidores-publicos-singapur-inclusivity-in-multicultural-societies",
+    "status": 200
+  },
+  "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/ingvar-kamprad-scholarship": {
+    "sha256": "c725f3e48e97dcacec5b58715d6c0a4522b8f2e49588a3c0cd001da6ee3067bc",
+    "etag": "",
+    "last_modified": "Wed, 30 Sep 2026 22:12:25 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/ingvar-kamprad-scholarship",
+    "status": 200
+  },
+  "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship": {
+    "sha256": "0ffc31393092f3711a584ed21da20cdf0c9a75a3ef50eb1140e717cbfec2ccb9",
+    "etag": "",
+    "last_modified": "Wed, 30 Sep 2026 22:10:36 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+    "status": 200
+  },
+  "https://apply-scholarships.si.se/en_GB/courses/course/1209-tourism-and-sustainable-development": {
+    "sha256": "50a2201e588cb7b8a2a1a4bef7da629435cf0a22be429585c681b84d44fa73e5",
+    "etag": "",
+    "last_modified": "",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://apply-scholarships.si.se/courses/search",
+    "status": 200
+  },
+  "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters": {
+    "sha256": "ca5d99b19a9eb3ae551f782648d62e8c1196e74da1df350d42285d833d446fae",
+    "etag": "\"1790777588-gzip\"",
+    "last_modified": "Wed, 30 Sep 2026 14:13:08 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "status": 200
+  },
+  "https://www.colfuturo.org/programas/credito-beca/convocatoria": {
+    "sha256": "57b9ac05bb2b40510b6a7658f94e4f0604a1020adc6fe7b2ecf4a385335a547a",
+    "etag": "W/\"1790806978\"",
+    "last_modified": "Wed, 30 Sep 2026 22:22:58 GMT",
+    "format": "html",
+    "checked_at": "2026-09-30",
+    "final_url": "https://www.colfuturo.org/programas/credito-beca/convocatoria",
+    "status": 200
+  }
+}

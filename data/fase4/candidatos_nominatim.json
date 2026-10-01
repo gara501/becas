@@ -1,0 +1,1150 @@
+{
+  "ciudad|Australia|Melbourne": [
+    {
+      "osm_type": "relation",
+      "osm_id": 4246124,
+      "lat": "-37.8142454",
+      "lon": "144.9631732",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Melbourne",
+      "display_name": "Melbourne, Victoria, Australia",
+      "address": {
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.763077479403244
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 2383266,
+      "lat": "-37.8141705",
+      "lon": "144.9655616",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "suburb",
+      "name": "Melbourne",
+      "display_name": "Melbourne, Victoria, Australia",
+      "address": {
+        "suburb": "Melbourne",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.44854900924452645
+    }
+  ],
+  "ciudad|Australia|Sídney": [
+    {
+      "osm_type": "relation",
+      "osm_id": 5750005,
+      "lat": "-33.8698439",
+      "lon": "151.2082848",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Sydney",
+      "display_name": "Sydney, New South Wales, Australia",
+      "address": {
+        "city": "Sydney",
+        "state": "New South Wales",
+        "ISO3166-2-lvl4": "AU-NSW",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.7815069337380703
+    }
+  ],
+  "ciudad|Colombia|Bogotá": [
+    {
+      "osm_type": "relation",
+      "osm_id": 7426387,
+      "lat": "4.6533817",
+      "lon": "-74.0836331",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city",
+      "name": "Bogota",
+      "display_name": "Bogota, Bogota, Capital District, RAP (Especial) Central, Colombia",
+      "address": {
+        "city": "Bogota",
+        "state": "Bogota, Capital District",
+        "ISO3166-2-lvl4": "CO-DC",
+        "region": "RAP (Especial) Central",
+        "country": "Colombia",
+        "country_code": "co"
+      },
+      "importance": 0.7069067650237404
+    }
+  ],
+  "ciudad|España|Madrid": [
+    {
+      "osm_type": "relation",
+      "osm_id": 5326784,
+      "lat": "40.4167820",
+      "lon": "-3.7035070",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city",
+      "name": "Madrid",
+      "display_name": "Madrid, Community of Madrid, Spain",
+      "address": {
+        "city": "Madrid",
+        "state": "Community of Madrid",
+        "ISO3166-2-lvl4": "ES-MD",
+        "country": "Spain",
+        "country_code": "es"
+      },
+      "importance": 0.8186903991321961
+    }
+  ],
+  "ciudad|India|Mohali": [
+    {
+      "osm_type": "node",
+      "osm_id": 125904109,
+      "lat": "30.6908804",
+      "lon": "76.7114879",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Mohali",
+      "display_name": "Mohali, S.A.S. Nagar (Mohali) Tahsil, Sahibzada Ajit Singh Nagar, Punjab, 140062, India",
+      "address": {
+        "city": "Mohali",
+        "county": "S.A.S. Nagar (Mohali) Tahsil",
+        "state_district": "Sahibzada Ajit Singh Nagar",
+        "state": "Punjab",
+        "ISO3166-2-lvl4": "IN-PB",
+        "postcode": "140062",
+        "country": "India",
+        "country_code": "in"
+      },
+      "importance": 0.47334347766189616
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 16475004,
+      "lat": "23.5315005",
+      "lon": "79.2315469",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city_district",
+      "name": "Mohali",
+      "display_name": "Mohali, Rehli Tahsil, Sagar, Madhya Pradesh, India",
+      "address": {
+        "city_district": "Mohali",
+        "county": "Rehli Tahsil",
+        "state_district": "Sagar",
+        "state": "Madhya Pradesh",
+        "ISO3166-2-lvl4": "IN-MP",
+        "country": "India",
+        "country_code": "in"
+      },
+      "importance": 0.16004000076295108
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 16475661,
+      "lat": "24.1441401",
+      "lon": "78.9822920",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city_district",
+      "name": "Mohali",
+      "display_name": "Mohali, Shahgarh Tahsil, Sagar, Madhya Pradesh, India",
+      "address": {
+        "city_district": "Mohali",
+        "county": "Shahgarh Tahsil",
+        "state_district": "Sagar",
+        "state": "Madhya Pradesh",
+        "ISO3166-2-lvl4": "IN-MP",
+        "country": "India",
+        "country_code": "in"
+      },
+      "importance": 0.16004000076295108
+    }
+  ],
+  "ciudad|México|Monterrey": [
+    {
+      "osm_type": "node",
+      "osm_id": 4145210488,
+      "lat": "25.6802019",
+      "lon": "-100.3152580",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Monterrey",
+      "display_name": "Monterrey, Nuevo León, 64490, Mexico",
+      "address": {
+        "city": "Monterrey",
+        "county": "Monterrey",
+        "state": "Nuevo León",
+        "ISO3166-2-lvl4": "MX-NLE",
+        "postcode": "64490",
+        "country": "Mexico",
+        "country_code": "mx"
+      },
+      "importance": 0.6465561332358502
+    }
+  ],
+  "ciudad|Países Bajos|Maastricht": [
+    {
+      "osm_type": "relation",
+      "osm_id": 2078291,
+      "lat": "50.8579855",
+      "lon": "5.6969882",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "municipality",
+      "name": "Maastricht",
+      "display_name": "Maastricht, Limburg, Netherlands",
+      "address": {
+        "municipality": "Maastricht",
+        "state": "Limburg",
+        "ISO3166-2-lvl4": "NL-LI",
+        "country": "Netherlands",
+        "country_code": "nl"
+      },
+      "importance": 0.642487349514156
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 2078292,
+      "lat": "50.8512438",
+      "lon": "5.6909768",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city",
+      "name": "Maastricht",
+      "display_name": "Maastricht, Limburg, Netherlands",
+      "address": {
+        "city": "Maastricht",
+        "municipality": "Maastricht",
+        "state": "Limburg",
+        "ISO3166-2-lvl4": "NL-LI",
+        "country": "Netherlands",
+        "country_code": "nl"
+      },
+      "importance": 0.642487349514156
+    }
+  ],
+  "ciudad|Reino Unido|Salford": [
+    {
+      "osm_type": "node",
+      "osm_id": 26867312,
+      "lat": "53.4877463",
+      "lon": "-2.2891921",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Salford",
+      "display_name": "Salford, Greater Manchester, England, M6 5JT, United Kingdom",
+      "address": {
+        "city": "Salford",
+        "ISO3166-2-lvl8": "GB-SLF",
+        "state_district": "Greater Manchester",
+        "state": "England",
+        "ISO3166-2-lvl4": "GB-ENG",
+        "postcode": "M6 5JT",
+        "country": "United Kingdom",
+        "country_code": "gb"
+      },
+      "importance": 0.5553128133326679
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 146657,
+      "lat": "53.4790361",
+      "lon": "-2.3856995",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city",
+      "name": "Salford",
+      "display_name": "Salford, Greater Manchester, England, United Kingdom",
+      "address": {
+        "city": "Salford",
+        "ISO3166-2-lvl8": "GB-SLF",
+        "state_district": "Greater Manchester",
+        "state": "England",
+        "ISO3166-2-lvl4": "GB-ENG",
+        "country": "United Kingdom",
+        "country_code": "gb"
+      },
+      "importance": 0.5240349507288167
+    },
+    {
+      "osm_type": "node",
+      "osm_id": 36427483,
+      "lat": "52.0435308",
+      "lon": "-0.6369237",
+      "category": "place",
+      "type": "village",
+      "addresstype": "village",
+      "name": "Salford",
+      "display_name": "Salford, Central Bedfordshire, England, MK17 8BD, United Kingdom",
+      "address": {
+        "village": "Salford",
+        "county": "Central Bedfordshire",
+        "ISO3166-2-lvl6": "GB-CBF",
+        "state": "England",
+        "ISO3166-2-lvl4": "GB-ENG",
+        "postcode": "MK17 8BD",
+        "country": "United Kingdom",
+        "country_code": "gb"
+      },
+      "importance": 0.4163784860435994
+    }
+  ],
+  "ciudad|Singapur|Singapur": [
+    {
+      "osm_type": "relation",
+      "osm_id": 17140517,
+      "lat": "1.2899175",
+      "lon": "103.8519072",
+      "category": "place",
+      "type": "city",
+      "addresstype": "city",
+      "name": "Singapore",
+      "display_name": "Singapore",
+      "address": {
+        "city": "Singapore",
+        "country": "Singapore",
+        "country_code": "sg"
+      },
+      "importance": 0.8031271896652215
+    }
+  ],
+  "ciudad|Suecia|Lund": [
+    {
+      "osm_type": "relation",
+      "osm_id": 2468628,
+      "lat": "55.7029296",
+      "lon": "13.1929449",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "city",
+      "name": "Lund",
+      "display_name": "Lund, Lund Municipality, Skåne County, Sweden",
+      "address": {
+        "city": "Lund",
+        "municipality": "Lund Municipality",
+        "county": "Skåne County",
+        "ISO3166-2-lvl4": "SE-M",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.6332133941536383
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 935666,
+      "lat": "55.6932601",
+      "lon": "13.3208320",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "municipality",
+      "name": "Lund Municipality",
+      "display_name": "Lund Municipality, Skåne County, Sweden",
+      "address": {
+        "municipality": "Lund Municipality",
+        "county": "Skåne County",
+        "ISO3166-2-lvl4": "SE-M",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.4964974809833107
+    },
+    {
+      "osm_type": "node",
+      "osm_id": 4087230269,
+      "lat": "64.7494541",
+      "lon": "20.8968083",
+      "category": "place",
+      "type": "hamlet",
+      "addresstype": "hamlet",
+      "name": "Lund",
+      "display_name": "Lund, Skellefteå kommun, Västerbotten County, 931 45, Sweden",
+      "address": {
+        "hamlet": "Lund",
+        "municipality": "Skellefteå kommun",
+        "county": "Västerbotten County",
+        "ISO3166-2-lvl4": "SE-AC",
+        "postcode": "931 45",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.31877743112977514
+    }
+  ],
+  "pais|Alemania": [
+    {
+      "osm_type": "relation",
+      "osm_id": 51477,
+      "lat": "51.1638175",
+      "lon": "10.4478313",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Germany",
+      "display_name": "Germany",
+      "address": {
+        "country": "Germany",
+        "country_code": "de"
+      },
+      "importance": 0.9528343247777981
+    }
+  ],
+  "pais|Australia": [
+    {
+      "osm_type": "relation",
+      "osm_id": 80500,
+      "lat": "-24.7761086",
+      "lon": "134.7550000",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Australia",
+      "display_name": "Australia",
+      "address": {
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.9007373714659365
+    }
+  ],
+  "pais|Canadá": [
+    {
+      "osm_type": "relation",
+      "osm_id": 1428125,
+      "lat": "61.0666922",
+      "lon": "-107.9917070",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Canada",
+      "display_name": "Canada",
+      "address": {
+        "country": "Canada",
+        "country_code": "ca"
+      },
+      "importance": 0.9082390417046676
+    }
+  ],
+  "pais|Chile": [
+    {
+      "osm_type": "relation",
+      "osm_id": 167454,
+      "lat": "-31.7613365",
+      "lon": "-71.3187697",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Chile",
+      "display_name": "Chile",
+      "address": {
+        "country": "Chile",
+        "country_code": "cl"
+      },
+      "importance": 0.8328576103514683
+    }
+  ],
+  "pais|China": [
+    {
+      "osm_type": "relation",
+      "osm_id": 270056,
+      "lat": "34.5412252",
+      "lon": "108.9237067",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "China",
+      "display_name": "China",
+      "address": {
+        "country": "China",
+        "country_code": "cn"
+      },
+      "importance": 0.9041723947646134
+    }
+  ],
+  "pais|Colombia": [
+    {
+      "osm_type": "relation",
+      "osm_id": 120027,
+      "lat": "4.0999170",
+      "lon": "-72.9088133",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Colombia",
+      "display_name": "Colombia",
+      "address": {
+        "country": "Colombia",
+        "country_code": "co"
+      },
+      "importance": 0.8332414433474805
+    }
+  ],
+  "pais|Corea del Sur": [
+    {
+      "osm_type": "relation",
+      "osm_id": 307756,
+      "lat": "36.6383920",
+      "lon": "127.6961188",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "South Korea",
+      "display_name": "South Korea",
+      "address": {
+        "country": "South Korea",
+        "country_code": "kr"
+      },
+      "importance": 0.8680626319377943
+    }
+  ],
+  "pais|España": [
+    {
+      "osm_type": "relation",
+      "osm_id": 1311341,
+      "lat": "39.3260685",
+      "lon": "-4.8379791",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Spain",
+      "display_name": "Spain",
+      "address": {
+        "country": "Spain",
+        "country_code": "es"
+      },
+      "importance": 0.9295913704622313
+    }
+  ],
+  "pais|Estados Unidos": [
+    {
+      "osm_type": "relation",
+      "osm_id": 148838,
+      "lat": "39.7837304",
+      "lon": "-100.4458820",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "United States",
+      "display_name": "United States",
+      "address": {
+        "country": "United States",
+        "country_code": "us"
+      },
+      "importance": 1.0
+    }
+  ],
+  "pais|Francia": [
+    {
+      "osm_type": "relation",
+      "osm_id": 2202162,
+      "lat": "46.6033540",
+      "lon": "1.8883335",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "France",
+      "display_name": "France",
+      "address": {
+        "country": "France",
+        "country_code": "fr"
+      },
+      "importance": 0.9781609870055644
+    }
+  ],
+  "pais|India": [
+    {
+      "osm_type": "relation",
+      "osm_id": 304716,
+      "lat": "22.3511148",
+      "lon": "78.6677428",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "India",
+      "display_name": "India",
+      "address": {
+        "country": "India",
+        "country_code": "in"
+      },
+      "importance": 0.8910953652546315
+    }
+  ],
+  "pais|Japón": [
+    {
+      "osm_type": "relation",
+      "osm_id": 382313,
+      "lat": "36.5748441",
+      "lon": "139.2394179",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Japan",
+      "display_name": "Japan",
+      "address": {
+        "country": "Japan",
+        "country_code": "jp"
+      },
+      "importance": 0.9383765725984483
+    }
+  ],
+  "pais|México": [
+    {
+      "osm_type": "relation",
+      "osm_id": 114686,
+      "lat": "23.6585116",
+      "lon": "-102.0077097",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Mexico",
+      "display_name": "Mexico",
+      "address": {
+        "country": "Mexico",
+        "country_code": "mx"
+      },
+      "importance": 0.8936823669554844
+    }
+  ],
+  "pais|Países Bajos": [
+    {
+      "osm_type": "relation",
+      "osm_id": 2323309,
+      "lat": "52.2434979",
+      "lon": "5.6343227",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Netherlands",
+      "display_name": "Netherlands",
+      "address": {
+        "country": "Netherlands",
+        "country_code": "nl"
+      },
+      "importance": 0.8863946992665602
+    }
+  ],
+  "pais|Reino Unido": [
+    {
+      "osm_type": "relation",
+      "osm_id": 62149,
+      "lat": "54.7023545",
+      "lon": "-3.2765753",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "United Kingdom",
+      "display_name": "United Kingdom",
+      "address": {
+        "country": "United Kingdom",
+        "country_code": "gb"
+      },
+      "importance": 0.9388533772580386
+    }
+  ],
+  "pais|Singapur": [
+    {
+      "osm_type": "relation",
+      "osm_id": 536780,
+      "lat": "1.3571070",
+      "lon": "103.8194992",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Singapore",
+      "display_name": "Singapore",
+      "address": {
+        "country": "Singapore",
+        "country_code": "sg"
+      },
+      "importance": 0.8031271896652215
+    }
+  ],
+  "pais|Suecia": [
+    {
+      "osm_type": "relation",
+      "osm_id": 52822,
+      "lat": "59.6749712",
+      "lon": "14.5208584",
+      "category": "boundary",
+      "type": "administrative",
+      "addresstype": "country",
+      "name": "Sweden",
+      "display_name": "Sweden",
+      "address": {
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.9074842245662982
+    }
+  ],
+  "universidad|Australia|Monash University": [
+    {
+      "osm_type": "way",
+      "osm_id": 27552390,
+      "lat": "-37.7839745",
+      "lon": "144.9586743",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Monash University",
+      "display_name": "Monash University, Mile Lane, Parkville, Melbourne, Victoria, 3052, Australia",
+      "address": {
+        "amenity": "Monash University",
+        "road": "Mile Lane",
+        "suburb": "Parkville",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "postcode": "3052",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.2548773901198179
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 19981951,
+      "lat": "-37.9141268",
+      "lon": "145.1316217",
+      "category": "amenity",
+      "type": "bus_station",
+      "addresstype": "amenity",
+      "name": "Monash University",
+      "display_name": "Monash University, Rainforest Walk, Clayton, Melbourne, Victoria, 3168, Australia",
+      "address": {
+        "amenity": "Monash University",
+        "road": "Rainforest Walk",
+        "suburb": "Clayton",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "postcode": "3168",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 8.045242999919154e-05
+    },
+    {
+      "osm_type": "node",
+      "osm_id": 5737782109,
+      "lat": "-37.9140763",
+      "lon": "145.1317235",
+      "category": "highway",
+      "type": "bus_stop",
+      "addresstype": "highway",
+      "name": "Monash University (Bay K)",
+      "display_name": "Monash University (Bay K), Rainforest Walk, Clayton, Melbourne, Victoria, 3168, Australia",
+      "address": {
+        "highway": "Monash University (Bay K)",
+        "road": "Rainforest Walk",
+        "suburb": "Clayton",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "postcode": "3168",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 8.045242999919154e-05
+    }
+  ],
+  "universidad|Australia|University of Melbourne": [
+    {
+      "osm_type": "way",
+      "osm_id": 1104080556,
+      "lat": "-37.8241371",
+      "lon": "144.9170886",
+      "category": "landuse",
+      "type": "construction",
+      "addresstype": "construction",
+      "name": "University of Melbourne (Future Fishermans Bend Campus)",
+      "display_name": "University of Melbourne (Future Fishermans Bend Campus), Port Melbourne, Melbourne, Victoria, 3207, Australia",
+      "address": {
+        "construction": "University of Melbourne (Future Fishermans Bend Campus)",
+        "suburb": "Port Melbourne",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "postcode": "3207",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.08008045242999921
+    },
+    {
+      "osm_type": "way",
+      "osm_id": 802410104,
+      "lat": "-37.8038271",
+      "lon": "144.9597056",
+      "category": "landuse",
+      "type": "commercial",
+      "addresstype": "commercial",
+      "name": "University of Melbourne",
+      "display_name": "University of Melbourne, Carlton, Melbourne, Victoria, Australia",
+      "address": {
+        "commercial": "University of Melbourne",
+        "suburb": "Carlton",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.08008045242999921
+    },
+    {
+      "osm_type": "way",
+      "osm_id": 22881690,
+      "lat": "-37.7960451",
+      "lon": "144.9610195",
+      "category": "leisure",
+      "type": "sports_centre",
+      "addresstype": "leisure",
+      "name": "Beaurepaire Centre (101)",
+      "display_name": "Beaurepaire Centre (101), 66, Tin Alley, Parkville, Melbourne, Victoria, 3052, Australia",
+      "address": {
+        "leisure": "Beaurepaire Centre (101)",
+        "house_number": "66",
+        "road": "Tin Alley",
+        "suburb": "Parkville",
+        "city": "Melbourne",
+        "state": "Victoria",
+        "ISO3166-2-lvl4": "AU-VIC",
+        "postcode": "3052",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 8.045242999919154e-05
+    }
+  ],
+  "universidad|Australia|University of Sydney": [
+    {
+      "osm_type": "way",
+      "osm_id": 1036678179,
+      "lat": "-33.8889072",
+      "lon": "151.1894111",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "The University of Sydney",
+      "display_name": "The University of Sydney, Lander Street, Darlington, Sydney, New South Wales, 2008, Australia",
+      "address": {
+        "amenity": "The University of Sydney",
+        "road": "Lander Street",
+        "suburb": "Darlington",
+        "city": "Sydney",
+        "state": "New South Wales",
+        "ISO3166-2-lvl4": "AU-NSW",
+        "postcode": "2008",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.6183413317998326
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 10306702,
+      "lat": "-33.8832536",
+      "lon": "151.2003294",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "University of Technology Sydney",
+      "display_name": "University of Technology Sydney, Balfour Street, Chippendale, Sydney, New South Wales, 2008, Australia",
+      "address": {
+        "amenity": "University of Technology Sydney",
+        "road": "Balfour Street",
+        "suburb": "Chippendale",
+        "city": "Sydney",
+        "state": "New South Wales",
+        "ISO3166-2-lvl4": "AU-NSW",
+        "postcode": "2008",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.48745117841956476
+    },
+    {
+      "osm_type": "way",
+      "osm_id": 1486021539,
+      "lat": "-33.8636046",
+      "lon": "151.2143884",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Sydney Conservatorium of Music",
+      "display_name": "Sydney Conservatorium of Music, 1, Conservatorium Road, Quay Quarter, Sydney, New South Wales, 2000, Australia",
+      "address": {
+        "amenity": "Sydney Conservatorium of Music",
+        "house_number": "1",
+        "road": "Conservatorium Road",
+        "neighbourhood": "Quay Quarter",
+        "suburb": "Sydney",
+        "city": "Sydney",
+        "state": "New South Wales",
+        "ISO3166-2-lvl4": "AU-NSW",
+        "postcode": "2000",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "importance": 0.45533791270208157
+    }
+  ],
+  "universidad|Canadá|University of British Columbia": [],
+  "universidad|Colombia|Universidad de los Andes": [
+    {
+      "osm_type": "relation",
+      "osm_id": 12923963,
+      "lat": "4.6014026",
+      "lon": "-74.0649050",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Universidad de los Andes",
+      "display_name": "Universidad de los Andes, Avenida Carrera 5 Este, Las Aguas, UPZs de Bogotá, UPZ La Candelaria, Bogota, Bogota, Capital District, RAP (Especial) Central, 111711, Colombia",
+      "address": {
+        "amenity": "Universidad de los Andes",
+        "road": "Avenida Carrera 5 Este",
+        "neighbourhood": "Las Aguas",
+        "suburb": "UPZ La Candelaria",
+        "city": "Bogota",
+        "state": "Bogota, Capital District",
+        "ISO3166-2-lvl4": "CO-DC",
+        "region": "RAP (Especial) Central",
+        "postcode": "111711",
+        "country": "Colombia",
+        "country_code": "co"
+      },
+      "importance": 0.472046593022794
+    },
+    {
+      "osm_type": "way",
+      "osm_id": 47587525,
+      "lat": "4.6942258",
+      "lon": "-74.0334779",
+      "category": "building",
+      "type": "university",
+      "addresstype": "building",
+      "name": "Universidad de los Andes",
+      "display_name": "Universidad de los Andes, 116-05, Avenida Carrera 7, Usaquén, UPZs de Bogotá, Localidad Usaquén, Bogota, Bogota, Capital District, RAP (Especial) Central, 110111, Colombia",
+      "address": {
+        "building": "Universidad de los Andes",
+        "house_number": "116-05",
+        "road": "Avenida Carrera 7",
+        "neighbourhood": "Usaquén",
+        "suburb": "Localidad Usaquén",
+        "city": "Bogota",
+        "state": "Bogota, Capital District",
+        "ISO3166-2-lvl4": "CO-DC",
+        "region": "RAP (Especial) Central",
+        "postcode": "110111",
+        "country": "Colombia",
+        "country_code": "co"
+      },
+      "importance": 7.831921873803338e-05
+    }
+  ],
+  "universidad|Francia|Sciences Po": [
+    {
+      "osm_type": "way",
+      "osm_id": 64658252,
+      "lat": "48.8538978",
+      "lon": "2.3290212",
+      "category": "amenity",
+      "type": "college",
+      "addresstype": "amenity",
+      "name": "Institut d'Études Politiques",
+      "display_name": "Institut d'Études Politiques, 27, Rue Saint-Guillaume, Quartier Saint-Thomas-d'Aquin, 7th Arrondissement, Paris, Ile-de-France, Metropolitan France, 75007, France",
+      "address": {
+        "amenity": "Institut d'Études Politiques",
+        "house_number": "27",
+        "road": "Rue Saint-Guillaume",
+        "city_block": "Quartier Saint-Thomas-d'Aquin",
+        "suburb": "7th Arrondissement",
+        "city_district": "Paris",
+        "city": "Paris",
+        "ISO3166-2-lvl6": "FR-75C",
+        "state": "Ile-de-France",
+        "ISO3166-2-lvl4": "FR-IDF",
+        "region": "Metropolitan France",
+        "postcode": "75007",
+        "country": "France",
+        "country_code": "fr"
+      },
+      "importance": 0.6199378019739679
+    }
+  ],
+  "universidad|India|Centre for Development of Advanced Computing Mohali": [],
+  "universidad|México|Tecnológico de Monterrey": [
+    {
+      "osm_type": "relation",
+      "osm_id": 21104322,
+      "lat": "25.6507267",
+      "lon": "-100.2893190",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Tecnológico de Monterrey",
+      "display_name": "Tecnológico de Monterrey, Laguna Santa María, Tanques de Guadalupe, Monterrey, Nuevo León, 66269, Mexico",
+      "address": {
+        "amenity": "Tecnológico de Monterrey",
+        "road": "Laguna Santa María",
+        "residential": "Tanques de Guadalupe",
+        "city": "Monterrey",
+        "county": "Monterrey",
+        "state": "Nuevo León",
+        "ISO3166-2-lvl4": "MX-NLE",
+        "postcode": "66269",
+        "country": "Mexico",
+        "country_code": "mx"
+      },
+      "importance": 6.936675059124159e-05
+    }
+  ],
+  "universidad|Países Bajos|Maastricht University": [
+    {
+      "osm_type": "way",
+      "osm_id": 1066422998,
+      "lat": "50.8472117",
+      "lon": "5.6859518",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Maastricht University",
+      "display_name": "Maastricht University, 4-6, Minderbroedersberg, Kommelkwartier, Maastricht-Centrum, Maastricht, Limburg, Netherlands, 6211 LK, Netherlands",
+      "address": {
+        "amenity": "Maastricht University",
+        "house_number": "4-6",
+        "road": "Minderbroedersberg",
+        "neighbourhood": "Kommelkwartier",
+        "quarter": "Maastricht-Centrum",
+        "city": "Maastricht",
+        "municipality": "Maastricht",
+        "state": "Limburg",
+        "ISO3166-2-lvl4": "NL-LI",
+        "country": "Netherlands",
+        "postcode": "6211 LK",
+        "country_code": "nl"
+      },
+      "importance": 6.929198138394778e-05
+    }
+  ],
+  "universidad|Reino Unido|University of Salford": [
+    {
+      "osm_type": "way",
+      "osm_id": 121703081,
+      "lat": "53.4732204",
+      "lon": "-2.2970993",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "University of Salford",
+      "display_name": "University of Salford, Orange, MediaCityUK, Salford Quays, Salford, Greater Manchester, England, M50 2HF, United Kingdom",
+      "address": {
+        "amenity": "University of Salford",
+        "road": "Orange",
+        "neighbourhood": "MediaCityUK",
+        "suburb": "Salford Quays",
+        "city": "Salford",
+        "ISO3166-2-lvl8": "GB-SLF",
+        "state_district": "Greater Manchester",
+        "state": "England",
+        "ISO3166-2-lvl4": "GB-ENG",
+        "postcode": "M50 2HF",
+        "country": "United Kingdom",
+        "country_code": "gb"
+      },
+      "importance": 5.99168383306175e-05
+    }
+  ],
+  "universidad|Suecia|Lund University": [
+    {
+      "osm_type": "relation",
+      "osm_id": 1323116,
+      "lat": "55.7126504",
+      "lon": "13.2107587",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Faculty of Engineering at Lund University",
+      "display_name": "Faculty of Engineering at Lund University, Box 118, Tornavägen, Norra universitetsområdet, Norr, Lund, Lund Municipality, Skåne County, 221 00, Sweden",
+      "address": {
+        "amenity": "Faculty of Engineering at Lund University",
+        "house_number": "Box 118",
+        "road": "Tornavägen",
+        "neighbourhood": "Norra universitetsområdet",
+        "city_district": "Norr",
+        "city": "Lund",
+        "municipality": "Lund Municipality",
+        "county": "Skåne County",
+        "ISO3166-2-lvl4": "SE-M",
+        "postcode": "221 00",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.3841981265934431
+    },
+    {
+      "osm_type": "way",
+      "osm_id": 99064211,
+      "lat": "55.7101311",
+      "lon": "13.2137064",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Lund University School of Economics and Management",
+      "display_name": "Lund University School of Economics and Management, Tycho Brahes väg, Norra universitetsområdet, Norr, Lund, Lund Municipality, Skåne County, 223 63, Sweden",
+      "address": {
+        "amenity": "Lund University School of Economics and Management",
+        "road": "Tycho Brahes väg",
+        "neighbourhood": "Norra universitetsområdet",
+        "city_district": "Norr",
+        "city": "Lund",
+        "municipality": "Lund Municipality",
+        "county": "Skåne County",
+        "ISO3166-2-lvl4": "SE-M",
+        "postcode": "223 63",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 0.32173239253715025
+    },
+    {
+      "osm_type": "relation",
+      "osm_id": 15831110,
+      "lat": "55.7146698",
+      "lon": "13.2083771",
+      "category": "amenity",
+      "type": "university",
+      "addresstype": "amenity",
+      "name": "Campus Lund Universitetsplatån",
+      "display_name": "Campus Lund Universitetsplatån, Ole Römers väg, Ideon Pålsjö, Norr, Lund, Lund Municipality, Skåne County, 223 63, Sweden",
+      "address": {
+        "amenity": "Campus Lund Universitetsplatån",
+        "road": "Ole Römers väg",
+        "neighbourhood": "Ideon Pålsjö",
+        "city_district": "Norr",
+        "city": "Lund",
+        "municipality": "Lund Municipality",
+        "county": "Skåne County",
+        "ISO3166-2-lvl4": "SE-M",
+        "postcode": "223 63",
+        "country": "Sweden",
+        "country_code": "se"
+      },
+      "importance": 6.859922178983776e-05
+    }
+  ],
+  "universidad|Suecia|Según máster elegible": []
+}
