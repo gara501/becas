@@ -16,6 +16,12 @@ npm run build
 
 Para desarrollo: `npm run dev`. El build incluye React 19, React Router, Motion, Tailwind y React Leaflet con grupos de marcadores. La vista mundial colorea los destinos por número de convocatorias (1, 2–4, 5 o más). Al elegir un país, muestra marcadores de becas, agrupa puntos coincidentes y abre la fuente oficial desde cada ficha.
 
+## Guardar, comparar y recordar cierres
+
+La vista **Explorar** permite guardar becas en este navegador sin crear cuenta. La lista identifica una beca retirada de la base y permite quitarla. Puedes seleccionar hasta tres oportunidades para compararlas; los datos faltantes se muestran como «No verificado». La selección para comparar dura la sesión; las guardadas persisten en `localStorage` del navegador.
+
+Las fichas con un cierre futuro y una fuente oficial verificada en los últimos 30 días ofrecen **Añadir cierre al calendario**. Descarga un archivo ICS para esa convocatoria, con un evento de día completo, enlace oficial y aviso de reconfirmar el plazo. Un cierre pendiente de revisión o sin fecha verificable no genera evento. El final del evento es el día siguiente, conforme a [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html). No se ofrece descarga pública de la base de datos.
+
 ## Próximas mejoras
 
 El [plan de mejoras](PLAN_MEJORAS.md) organiza vigencia de datos, fichas, experiencia móvil, favoritos, calendario y analítica en cuatro etapas.
@@ -70,10 +76,12 @@ El script nunca adopta por sí solo una fecha encontrada en una página índice,
 
 ```powershell
 node scripts/qa_ui.mjs
+node scripts/qa_coleccion.mjs
+node scripts/qa_calendario.mjs
 ```
 
 La prueba abre el HTML final mediante `file://` en Chrome y verifica filtros, rutas, mapa y ancho móvil. Las capturas quedan en `.tmp/`. Requiere Chrome en la ruta indicada en el script.
 
 ## Estado del proyecto
 
-Fases 1 a 6 completadas. La primera consulta completa de fase 6 encontró 7 sitios inaccesibles desde el script y dejó 14 fichas para revisión; los valores originales se conservaron. El proceso incremental permite repetir la consulta o revisar solo esas fichas sin rehacer la base.
+Fases 1 a 6 completadas. La primera consulta completa de fase 6 encontró 7 sitios inaccesibles desde el script. La [revisión de la etapa 1](REVISION_ETAPA1.md) confirmó 12 de las 14 fichas pendientes; 2 siguen señaladas para revisión manual. El proceso incremental permite repetir la consulta o revisar solo esas fichas sin rehacer la base.

@@ -40,7 +40,7 @@ S = pequeño; M = mediano. Son tamaños relativos, no promesas de duración.
 
 **Alcance:** M7–M9. Guardar favoritos en `localStorage`, comparar un máximo de tres becas y exportar al calendario únicamente cierres con fecha confirmada. El ICS será un evento de día completo porque la mayoría de las fuentes no publican una hora o zona horaria fiable.
 
-**Entrega:** lista de favoritos, comparador y botón de calendario en las fichas elegibles.
+**Entrega implementada (2026-10-01):** lista de guardadas en `localStorage` con identificación de registros retirados; comparación accesible de hasta tres becas; archivo ICS de día completo solo para cierres futuros con fuente, fecha y verificación reciente.
 
 **Aceptación:** favoritos sobreviven a recargar la página y no requieren cuenta; una beca retirada se identifica en favoritos; la comparación muestra también datos faltantes; el calendario incluye enlace oficial y advertencia de reconfirmar el plazo.
 
