@@ -29,6 +29,12 @@ Cada registro incluye `url_oficial`, `fuente_de_verificacion` y `fecha_ultima_ve
 
 El mapa usa límites de [Natural Earth](https://www.naturalearthdata.com/about/terms-of-use/) y coordenadas de [OpenStreetMap](https://www.openstreetmap.org/copyright). Los puntos a nivel de país o ciudad son representativos; no implican la ubicación de una universidad. Una beca puede cubrir varios niveles, de modo que la suma de la tabla país/nivel puede exceder 44. La base es una selección verificada y no un censo exhaustivo.
 
+## Publicar en GitHub Pages
+
+El flujo [pages.yml](.github/workflows/pages.yml) compila y publica `dist/` cada vez que se actualiza `main`. También puede ejecutarse manualmente desde **Actions → Publicar Atlas/Becas en GitHub Pages → Run workflow**. Compila el CSV junto al mapa; no consulta las fuentes de becas durante el despliegue.
+
+Activa una vez **Settings → Pages → Build and deployment → Source: GitHub Actions** en el repositorio. Después del primer flujo exitoso, la dirección será [gara501.github.io/becas](https://gara501.github.io/becas/). Si el flujo se ejecutó antes de activar Pages y falló, vuelve a lanzarlo desde **Actions**. Las rutas usan `HashRouter` y recursos relativos para funcionar tanto en Pages como al abrir `dist/index.html` localmente. Puedes probar la ruta de Pages con `node scripts/qa_pages.mjs` después de `npm run build`. Esta prueba usa Chrome instalado localmente.
+
 ## Actualización a demanda
 
 Instala las dependencias una vez y ejecuta un solo comando cuando quieras consultar las fuentes de nuevo:
