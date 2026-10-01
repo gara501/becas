@@ -82,6 +82,8 @@ function popupContent(item, estado, onDetails) {
   date.textContent = `Cierre: ${fechaCorta(item.fecha_cierre)}`
   const link = document.createElement('a')
   link.href = item.url_oficial
+  link.dataset.becaId = item.id
+  link.dataset.linkContext = 'mapa'
   link.target = '_blank'
   link.rel = 'noopener noreferrer'
   link.textContent = 'VER CONVOCATORIA OFICIAL ↗'

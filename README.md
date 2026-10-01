@@ -22,6 +22,12 @@ La vista **Explorar** permite guardar becas en este navegador sin crear cuenta. 
 
 Las fichas con un cierre futuro y una fuente oficial verificada en los últimos 30 días ofrecen **Añadir cierre al calendario**. Descarga un archivo ICS para esa convocatoria, con un evento de día completo, enlace oficial y aviso de reconfirmar el plazo. Un cierre pendiente de revisión o sin fecha verificable no genera evento. El final del evento es el día siguiente, conforme a [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html). No se ofrece descarga pública de la base de datos.
 
+## Analítica opcional
+
+La compilación de producción incluye el ID público de GA4 configurado por el propietario. La etiqueta se carga únicamente después de que una persona acepte el aviso. El atlas funciona sin analítica; la elección puede cambiarse desde el pie de página. No se envía el texto del buscador ni las becas guardadas. La [guía de analítica](ANALITICA.md) documenta los eventos, el tablero y la configuración de GA4 necesaria para evitar vistas duplicadas.
+
+Netlify usa `netlify.toml` para ejecutar `npm run build` y publicar `dist/`. El dominio personalizado se administra en Netlify y en el registrador; el repositorio ya no contiene el `CNAME` anterior de GitHub Pages.
+
 ## Próximas mejoras
 
 El [plan de mejoras](PLAN_MEJORAS.md) organiza vigencia de datos, fichas, experiencia móvil, favoritos, calendario y analítica en cuatro etapas.

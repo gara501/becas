@@ -48,7 +48,7 @@ S = pequeño; M = mediano. Son tamaños relativos, no promesas de duración.
 
 **Alcance:** M11. Definir tres preguntas antes de instalar GA4: qué destinos y niveles interesan, dónde se producen cero resultados y qué fichas llevan a la fuente oficial. Medir filtros por categoría y clics externos, sin enviar texto libre de búsqueda ni datos personales. Configurar consentimiento y una nota de privacidad. Verificar en DebugView las vistas de `HashRouter` para evitar páginas omitidas o duplicadas.
 
-**Entrega:** eventos y un tablero pequeño con interés por destino/nivel, tasa de cero resultados y clics hacia fuentes oficiales. Un clic externo mide interés, no una postulación terminada.
+**Entrega implementada (2026-10-01):** integración de GA4 con consentimiento opcional, eventos de rutas, filtros, cero resultados y clics a fuentes oficiales; configuración del ID público para Netlify y guía de un tablero pequeño en `ANALITICA.md`. Un clic externo mide interés, no una postulación terminada. El DebugView real se comprueba tras el despliegue.
 
 **Aceptación:** la web funciona sin aceptar analítica; no se envía texto libre; cada cambio de ruta genera como máximo una vista; los eventos sirven para decidir una mejora concreta tras un periodo de observación.
 
@@ -68,3 +68,7 @@ Se valida cada etapa en la versión local y en GitHub Pages antes de iniciar la 
 - Confirmar este orden de etapas.
 - Elegir el plazo que dispara «Cierran pronto» (propuesta: 30 días).
 - Para GA4, facilitar un ID de medición `G-...` y aprobar el texto de privacidad cuando llegue la etapa 4.
+
+## Idea para la siguiente iteración — presupuesto por beca
+
+Estimar por rango y moneda local el costo de vida mensual en la ciudad de destino, vivienda, viaje, seguro, visa y gastos iniciales; restar solo los componentes de cobertura confirmados de la convocatoria. Mostrar costo total, aporte personal estimado, duración supuesta, fecha y enlaces oficiales de cada precio. No derivar una cifra exacta cuando la ciudad, duración o cobertura no estén verificadas. Empezar con un piloto de destinos cuya fuente oficial publique costos comparables y revisar periódicamente precios y tipos de cambio.

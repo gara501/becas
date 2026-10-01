@@ -26,7 +26,7 @@ export default function ScholarshipCard({ item, index, onLocate, onDetails, onTo
         <div className="card-actions">
           {calendarEligible ? <button type="button" onClick={() => onCalendar(item)} title="Añadir cierre al calendario" aria-label={`Añadir cierre de ${item.nombre} al calendario`}><Download size={17} /></button> : null}
           {hasPoint ? <button type="button" onClick={() => onLocate(item)} title="Ubicar en el mapa" aria-label={`Ubicar ${item.nombre} en el mapa`}><LocateFixed size={17} /></button> : null}
-          <a href={item.url_oficial} target="_blank" rel="noopener noreferrer" title="Abrir fuente oficial" aria-label={`Abrir fuente oficial de ${item.nombre}`}><ArrowUpRight size={18} /></a>
+          <a href={item.url_oficial} data-beca-id={item.id} data-link-context="tarjeta" target="_blank" rel="noopener noreferrer" title="Abrir fuente oficial" aria-label={`Abrir fuente oficial de ${item.nombre}`}><ArrowUpRight size={18} /></a>
         </div>
       </div>
     </article>

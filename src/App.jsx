@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Compass, ExternalLink, GitCompareArrows, Globe2, Heart, Info, List, Map as MapIcon, MapPinned, ShieldCheck } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import FilterPanel from './components/FilterPanel.jsx'
+import AnalyticsConsent from './components/AnalyticsConsent.jsx'
+import { analyticsChoice, startAnalytics, trackEvent, trackPageView } from './analytics.js'
 import MapView from './components/MapView.jsx'
 import ScholarshipCard from './components/ScholarshipCard.jsx'
 import ScholarshipDetail from './components/ScholarshipDetail.jsx'
@@ -42,6 +44,7 @@ function Footer() {
     <footer className="site-footer"><div className="page-container footer-inner">
       <span>ATLAS/BECAS <b>·</b> Una guía de oportunidades verificadas para Colombia.</span>
       <span>Corte de datos: {fechaCorta(CORTE)} <b>·</b> Límites © Natural Earth · coordenadas © OpenStreetMap</span>
+      <NavLink to="/privacidad">Privacidad</NavLink><AnalyticsConsent />
     </div></footer>
   )
 }
@@ -67,6 +70,20 @@ function AtlasPage() {
   const hoy = fechaHoyColombia()
   const estadoDe = useCallback((item) => estadoVigente(item, IDS_PENDIENTES_REVISION, hoy), [hoy])
   const filtered = useMemo(() => ordenarBecas(filtrarBecas(BECAS, filters, estadoDe).filter((item) => filters.vista === 'todas' || (filters.vista === 'abiertas' && estadoDe(item).clave === 'abierta') || (filters.vista === 'pronto' && cierraPronto(item, IDS_PENDIENTES_REVISION, hoy)) || (filters.vista === 'recurrentes' && estadoDe(item).clave === 'recurrente')), orden), [filters, estadoDe, hoy, orden])
+  useEffect(() => {
+    if (!Object.entries(filters).some(([key, value]) => value !== DEFAULT_FILTERS[key])) return undefined
+    const timer = window.setTimeout(() => {
+      const parameters = {
+        destination: filters.pais, study_level: filters.nivel, study_area: filters.area,
+        coverage: filters.cobertura, application_status: filters.estado,
+        closing_month: filters.mes, quick_view: filters.vista,
+        has_search: Boolean(filters.busqueda.trim()), results_count: filtered.length,
+      }
+      trackEvent('explore_filters', parameters)
+      if (filtered.length === 0) trackEvent('no_results', parameters)
+    }, 700)
+    return () => window.clearTimeout(timer)
+  }, [filters, filtered.length])
   const detailItem = BECAS_BY_ID.get(detailId)
   const compareItems = compareIds.map((id) => BECAS_BY_ID.get(id)).filter(Boolean)
   const selectedCountry = filters.pais === 'todos' ? null : filters.pais
@@ -139,13 +156,41 @@ function AtlasPage() {
 
 function SourcesPage() {
   const sources = [...BECAS].sort((a, b) => a.entidad_oferente.localeCompare(b.entidad_oferente, 'es') || a.nombre.localeCompare(b.nombre, 'es'))
-  return <main id="contenido" className="page-container subpage"><div className="subpage-top"><span className="section-kicker">03 / PROCEDENCIA</span><h1>Fuentes que puedes <em>comprobar.</em></h1><p>Cada convocatoria enlaza directamente con la institución oferente o con el portal oficial que publica la oferta para Colombia. Consulta los términos vigentes antes de postular.</p></div><div className="source-header"><span>{sources.length} REGISTROS · FUENTES OFICIALES</span><span>VERIFICADAS EL {fechaCorta(CORTE).toUpperCase()}</span></div><div className="source-list">{sources.map((item, index) => <a key={item.id} href={item.url_oficial} target="_blank" rel="noopener noreferrer"><span className="source-index">{String(index + 1).padStart(2, '0')}</span><span className="source-main"><b>{item.nombre}</b><small>{item.entidad_oferente}</small></span><span className="source-country">{item.pais_destino}</span><ExternalLink size={17} /></a>)}</div></main>
+  return <main id="contenido" className="page-container subpage"><div className="subpage-top"><span className="section-kicker">03 / PROCEDENCIA</span><h1>Fuentes que puedes <em>comprobar.</em></h1><p>Cada convocatoria enlaza directamente con la institución oferente o con el portal oficial que publica la oferta para Colombia. Consulta los términos vigentes antes de postular.</p></div><div className="source-header"><span>{sources.length} REGISTROS · FUENTES OFICIALES</span><span>VERIFICADAS EL {fechaCorta(CORTE).toUpperCase()}</span></div><div className="source-list">{sources.map((item, index) => <a key={item.id} href={item.url_oficial} data-beca-id={item.id} data-link-context="fuentes" target="_blank" rel="noopener noreferrer"><span className="source-index">{String(index + 1).padStart(2, '0')}</span><span className="source-main"><b>{item.nombre}</b><small>{item.entidad_oferente}</small></span><span className="source-country">{item.pais_destino}</span><ExternalLink size={17} /></a>)}</div></main>
 }
 
 function MethodPage() {
   return <main id="contenido" className="page-container subpage"><div className="subpage-top"><span className="section-kicker">04 / MÉTODO</span><h1>Una base clara, <em>con sus límites.</em></h1><p>Reunimos convocatorias con elegibilidad comprobada para personas colombianas y conservamos el enlace donde se verificó cada dato.</p></div><div className="method-grid"><article><span>01 / SELECCIÓN</span><h2>Fuentes primero.</h2><p>Priorizamos portales de gobiernos, universidades y organismos oficiales. Los agregadores no son evidencia suficiente de elegibilidad. Un campo sin sustento se marca “No verificado”.</p></article><article><span>02 / CONVOCATORIAS</span><h2>Un programa, un registro.</h2><p>Las modalidades de una misma convocatoria se consolidaron. Los programas relacionados con solicitudes distintas siguen separados y sus posibles solapamientos se documentaron durante la depuración.</p></article><article><span>03 / MAPA</span><h2>Precisión visible.</h2><p>Las coordenadas de OpenStreetMap indican país, ciudad o universidad según la evidencia. Los límites provienen de Natural Earth. Los programas multinacionales figuran en la lista sin un punto arbitrario.</p></article><article><span>04 / FECHAS</span><h2>Una fotografía del tiempo.</h2><p>Los estados abierta, cerrada y recurrente corresponden al {fechaCorta(CORTE)}. Los plazos cambian por edición y algunos dependen de la institución o del curso.</p></article></div><section className="method-limits"><div><span className="section-kicker">EXCLUSIONES DOCUMENTADAS</span><h2>Popular no siempre significa elegible.</h2><p>Estos programas se omitieron tras revisar las condiciones publicadas.</p></div><div>{EXCLUSIONES.map((item) => <a key={item.name} href={item.url} target="_blank" rel="noopener noreferrer"><b>{item.name}</b><span>{item.reason}</span><ExternalLink size={16} /></a>)}</div></section></main>
 }
 
+function PrivacyPage() {
+  return <main id="contenido" className="page-container subpage privacy-page"><div className="subpage-top"><span className="section-kicker">05 / PRIVACIDAD</span><h1>Datos para mejorar, <em>con tu permiso.</em></h1><p>La navegación por el atlas, los filtros y la apertura de fuentes oficiales funcionan sin analítica.</p></div><div className="method-grid"><article><span>01 / MEDICIÓN OPCIONAL</span><h2>Qué medimos.</h2><p>Con tu permiso usamos Google Analytics 4 para contar vistas de las páginas, categorías de filtros, búsquedas sin resultados y clics que llevan a una convocatoria oficial. Un clic no significa que hayas postulado.</p></article><article><span>02 / DATOS QUE OMITIMOS</span><h2>Sin tu texto de búsqueda.</h2><p>No enviamos lo que escribes en el buscador, tu lista de becas guardadas, ni los datos de un formulario personal. Los eventos usan categorías y el identificador público de la beca.</p></article><article><span>03 / TU ELECCIÓN</span><h2>Puedes cambiarla.</h2><p>La elección se guarda en este navegador. Puedes usar “Preferencias de analítica” en el pie de página para permitirla o rechazarla más adelante. Al retirarla, la página se recarga para detener la medición.</p></article><article><span>04 / PROVEEDOR</span><h2>Google Analytics.</h2><p>Cuando permites la medición, el navegador carga la etiqueta de Google. Puedes consultar su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">política de privacidad</a>. Si el sitio no tiene un ID de medición configurado, no carga la etiqueta.</p></article></div></main>
+}
+
+function RouteAnalytics() {
+  const location = useLocation()
+  useEffect(() => {
+    if (analyticsChoice() === 'accepted') {
+      startAnalytics()
+      trackPageView(location.pathname)
+    }
+  }, [location.pathname])
+  return null
+}
+
 export default function App() {
-  return <div className="app-shell"><a className="skip-link" href="#contenido">Saltar al contenido</a><Header /><Routes><Route path="/" element={<AtlasPage />} /><Route path="/fuentes" element={<SourcesPage />} /><Route path="/metodo" element={<MethodPage />} /><Route path="*" element={<AtlasPage />} /></Routes><Footer /></div>
+  useEffect(() => {
+    const onOfficialLink = (event) => {
+      const anchor = event.target.closest?.('a[data-beca-id]')
+      if (!anchor) return
+      const item = BECAS_BY_ID.get(anchor.dataset.becaId)
+      if (item) trackEvent('official_link_click', {
+        scholarship_id: item.id, destination: item.pais_destino,
+        link_context: anchor.dataset.linkContext || 'otro',
+      })
+    }
+    document.addEventListener('click', onOfficialLink)
+    return () => document.removeEventListener('click', onOfficialLink)
+  }, [])
+  return <div className="app-shell"><RouteAnalytics /><a className="skip-link" href="#contenido">Saltar al contenido</a><Header /><Routes><Route path="/" element={<AtlasPage />} /><Route path="/fuentes" element={<SourcesPage />} /><Route path="/metodo" element={<MethodPage />} /><Route path="/privacidad" element={<PrivacyPage />} /><Route path="*" element={<AtlasPage />} /></Routes><Footer /></div>
 }

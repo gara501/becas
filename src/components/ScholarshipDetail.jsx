@@ -49,7 +49,7 @@ export default function ScholarshipDetail({ item, estado, onClose, favorite, com
         </dl></section>
         <p className="detail-reminder">Los plazos pueden cambiar por edición. Revisa las condiciones vigentes antes de enviar tu solicitud.</p>
       </div>
-      <footer className="detail-footer"><button type="button" onClick={onClose}><ArrowLeft size={16} /> Volver a resultados</button><a href={item.url_oficial} target="_blank" rel="noopener noreferrer">Ver convocatoria oficial <ArrowUpRight size={17} /></a></footer>
+      <footer className="detail-footer"><button type="button" onClick={onClose}><ArrowLeft size={16} /> Volver a resultados</button><a href={item.url_oficial} data-beca-id={item.id} data-link-context="ficha" target="_blank" rel="noopener noreferrer">Ver convocatoria oficial <ArrowUpRight size={17} /></a></footer>
     </aside>
   </div>
 }
