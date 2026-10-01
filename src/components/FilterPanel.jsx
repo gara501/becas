@@ -44,6 +44,7 @@ export default function FilterPanel({ filters, onChange, onReset, activeCount })
         <SelectField label="ESTADO" value={filters.estado} onChange={change('estado')}>
           <option value="todos">Todos los estados</option>
           <option value="abierta">Abierta</option>
+          <option value="pronto">Cierra pronto</option>
           <option value="cerrada">Cerrada</option>
           <option value="recurrente">Recurrente</option>
           <option value="proxima">Próxima apertura</option>

@@ -75,7 +75,12 @@ function AtlasPage() {
       ? { ...estado, clave: 'pronto', etiqueta: 'Cierra pronto' }
       : estado
   }, [estadoDe, hoy])
-  const filtered = useMemo(() => ordenarBecas(filtrarBecas(BECAS, filters, estadoDe).filter((item) => filters.vista === 'todas' || (filters.vista === 'abiertas' && estadoDe(item).clave === 'abierta') || (filters.vista === 'pronto' && cierraPronto(item, IDS_PENDIENTES_REVISION, hoy)) || (filters.vista === 'recurrentes' && estadoDe(item).clave === 'recurrente')), orden), [filters, estadoDe, hoy, orden])
+  const filtered = useMemo(() => {
+    const vistaEstado = filters.vista === 'abiertas' ? 'abierta' : filters.vista === 'recurrentes' ? 'recurrente' : filters.vista
+    const visibles = filtrarBecas(BECAS, filters, estadoVisual)
+      .filter((item) => filters.vista === 'todas' || estadoVisual(item).clave === vistaEstado)
+    return ordenarBecas(visibles, orden)
+  }, [filters, estadoVisual, orden])
   useEffect(() => {
     if (!Object.entries(filters).some(([key, value]) => value !== DEFAULT_FILTERS[key])) return undefined
     const timer = window.setTimeout(() => {
@@ -95,7 +100,7 @@ function AtlasPage() {
   const selectedCountry = filters.pais === 'todos' ? null : filters.pais
   const countrySummary = useMemo(() => resumenPais(BECAS).filter(([country]) => country !== 'Varios'), [])
   const activeCount = Object.entries(filters).filter(([key, value]) => value !== DEFAULT_FILTERS[key]).length
-  const openTotal = BECAS.filter((item) => estadoDe(item).clave === 'abierta').length
+  const openTotal = BECAS.filter((item) => estadoVisual(item).clave === 'abierta').length
   const changeFilters = useCallback((updater) => { setFilters(updater); setSelectedId(null) }, [])
   const resetFilters = useCallback(() => { setFilters(DEFAULT_FILTERS); setOrden('nombre'); setSelectedId(null) }, [])
   const chooseCountry = useCallback((country) => {
@@ -131,7 +136,7 @@ function AtlasPage() {
         <div className="hero-aside" aria-label="Resumen de la base de datos">
           <div className="aside-head"><Globe2 size={18} /> PANORAMA / {CORTE.replaceAll('-', '.')}</div>
           <div className="big-stat"><strong>{BECAS.length}</strong><span>OPORTUNIDADES<br />DOCUMENTADAS</span></div>
-          <div className="stat-row"><span><b>{countrySummary.length}</b> países de destino</span><span><b>{openTotal}</b> abiertas confirmadas hoy</span></div>
+          <div className="stat-row"><span><b>{countrySummary.length}</b> países de destino</span><span><b>{openTotal}</b> abiertas ahora</span></div>
           <div className="aside-bottom">DATOS CON TRAZABILIDAD <ShieldCheck size={16} /></div>
         </div>
       </div></section>
@@ -154,7 +159,7 @@ function AtlasPage() {
           </section>
         </div>
         <section className="destinations"><div className="destinations-head"><span className="section-kicker">02 / DESTINOS</span><h2>Elige una dirección.</h2><p>El conteo corresponde a convocatorias únicas, no al número de plazas disponibles.</p></div><div className="destination-list">{countrySummary.map(([country, count], index) => <button type="button" key={country} onClick={() => { chooseCountry(country); showMap() }}><span className="destination-index">{String(index + 1).padStart(2, '0')}</span><span>{country}</span><b>{count}</b><ArrowRight size={17} /></button>)}</div></section>
-        <div className="data-note"><Info size={16} /><span>Corte de verificación más antiguo: {fechaCorta(CORTE)}. Última consulta automatizada: {fechaCorta(ULTIMA_CONSULTA)}.{PENDIENTES_REVISION ? ` ${PENDIENTES_REVISION} fichas requieren revisión manual.` : ''} La vista «Abiertas ahora» exige una fecha de cierre vigente y verificación en los últimos 30 días. “Recurrente” indica un programa periódico; confirma el plazo de cada edición en la fuente oficial. Dos programas de destino múltiple no tienen punto único en el mapa.</span></div>
+        <div className="data-note"><Info size={16} /><span>Corte de verificación más antiguo: {fechaCorta(CORTE)}. Última consulta automatizada: {fechaCorta(ULTIMA_CONSULTA)}.{PENDIENTES_REVISION ? ` ${PENDIENTES_REVISION} fichas requieren revisión manual.` : ''} «Abiertas ahora» excluye las que cierran en los próximos 30 días; aparecen en «Cierran pronto». Ambas vistas exigen un plazo vigente y verificación reciente. “Recurrente” indica un programa periódico; confirma el plazo de cada edición en la fuente oficial. Dos programas de destino múltiple no tienen punto único en el mapa.</span></div>
       </main>
       <AnimatePresence onExitComplete={returnDetailFocus}>{detailItem ? <ScholarshipDetail key={detailItem.id} item={detailItem} estado={estadoVisual(detailItem)} onClose={closeDetails} favorite={favoriteIds.has(detailItem.id)} compared={compareIds.includes(detailItem.id)} compareFull={compareFull} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} calendarEligible={cierreConfirmado(detailItem, IDS_PENDIENTES_REVISION, hoy)} onCalendar={descargarIcs} /> : null}</AnimatePresence>
       {collectionPanel === 'saved' ? <SavedPanel entries={favoritas} byId={BECAS_BY_ID} estadoDe={estadoVisual} compareIds={compareIds} onToggleFavorite={toggleFavorite} onToggleCompare={toggleCompare} onOpenDetail={openDetailsFromSaved} onOpenCompare={openCompareFromSaved} onClose={closeCollection} /> : null}
