@@ -5,8 +5,7 @@ Mapa interactivo y base verificada de becas elegibles para personas colombianas.
 ## Abrir el mapa
 
 1. Abre [dist/index.html](dist/index.html) directamente en un navegador. No requiere servidor, cuenta ni clave de mapas.
-2. El CSV descargable está junto al archivo, en [dist/becas.csv](dist/becas.csv).
-3. El archivo HTML contiene React, estilos, datos y límites del mapa. Google Sans se carga cuando hay conexión; existe una tipografía alternativa local.
+2. El archivo HTML contiene React, estilos, datos y límites del mapa. Google Sans se carga cuando hay conexión; existe una tipografía alternativa local.
 
 Para reconstruir la distribución desde el repositorio:
 
@@ -31,7 +30,7 @@ El mapa usa límites de [Natural Earth](https://www.naturalearthdata.com/about/t
 
 ## Publicar en GitHub Pages
 
-El flujo [pages.yml](.github/workflows/pages.yml) compila y publica `dist/` cada vez que se actualiza `main`. También puede ejecutarse manualmente desde **Actions → Publicar Atlas/Becas en GitHub Pages → Run workflow**. Compila el CSV junto al mapa; no consulta las fuentes de becas durante el despliegue.
+El flujo [pages.yml](.github/workflows/pages.yml) compila y publica `dist/` cada vez que se actualiza `main`. También puede ejecutarse manualmente desde **Actions → Publicar Atlas/Becas en GitHub Pages → Run workflow**. Empaqueta la base verificada dentro del mapa; no expone un CSV descargable ni consulta las fuentes durante el despliegue.
 
 Activa una vez **Settings → Pages → Build and deployment → Source: GitHub Actions** en el repositorio. Después del primer flujo exitoso, la dirección será [gara501.github.io/becas](https://gara501.github.io/becas/). Si el flujo se ejecutó antes de activar Pages y falló, vuelve a lanzarlo desde **Actions**. Las rutas usan `HashRouter` y recursos relativos para funcionar tanto en Pages como al abrir `dist/index.html` localmente. Puedes probar la ruta de Pages con `node scripts/qa_pages.mjs` después de `npm run build`. Esta prueba usa Chrome instalado localmente.
 
@@ -45,7 +44,7 @@ npm ci
 npm run actualizar
 ```
 
-El comando consulta las URL oficiales, reutiliza los identificadores HTTP y huellas de la consulta anterior, limita las solicitudes por dominio, regenera el CSV y reconstruye el HTML. No repite la búsqueda, deduplicación ni geocodificación de las fases anteriores. También puedes consultar una ficha con `python scripts/actualizar_becas.py --solo-id ID` o limitar una prueba con `--max 5`.
+El comando consulta las URL oficiales, reutiliza los identificadores HTTP y huellas de la consulta anterior, limita las solicitudes por dominio, actualiza el CSV interno en `data/actualizaciones/` y reconstruye el HTML. No repite la búsqueda, deduplicación ni geocodificación de las fases anteriores. También puedes consultar una ficha con `python scripts/actualizar_becas.py --solo-id ID` o limitar una prueba con `--max 5`.
 
 Revisa estos archivos después de cada ejecución:
 

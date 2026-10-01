@@ -5,7 +5,6 @@ Prefiere el CSV incremental si existe; mantiene las fechas individuales de verif
 """
 import csv
 import json
-import shutil
 from collections import Counter
 from pathlib import Path
 
@@ -16,7 +15,6 @@ SOURCE = UPDATED if UPDATED.exists() else BASE
 REPORT = ROOT / "data" / "actualizaciones" / "resumen.json"
 GEO_SOURCE = ROOT / "data" / "fase4" / "geocodigos_aprobados.csv"
 DATA_DIR = ROOT / "src" / "data"
-PUBLIC = ROOT / "public" / "becas.csv"
 
 with SOURCE.open(encoding="utf-8-sig", newline="") as file:
     rows = list(csv.DictReader(file))
@@ -32,10 +30,8 @@ metadata = {
     "pendientes_revision": report.get("pendientes_revision", 0),
 }
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-PUBLIC.parent.mkdir(parents=True, exist_ok=True)
 (DATA_DIR / "becas.json").write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 (DATA_DIR / "geocodigos.json").write_text(json.dumps(places, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 (DATA_DIR / "corte.json").write_text(json.dumps(metadata, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-shutil.copyfile(SOURCE, PUBLIC)
 print(f"Datos web: {len(rows)} convocatorias; {len(places)} lugares; {dict(Counter(r['estado_convocatoria'] for r in rows))}")
 print(f"Fuente: {SOURCE.relative_to(ROOT)}; corte verificado más antiguo: {metadata['fecha_corte_verificado']}")

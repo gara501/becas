@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
-import { ArrowDownToLine, ArrowLeft, ArrowRight, Compass, ExternalLink, Globe2, Info, MapPinned, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Compass, ExternalLink, Globe2, Info, MapPinned, ShieldCheck } from 'lucide-react'
 import { motion } from 'motion/react'
 import FilterPanel from './components/FilterPanel.jsx'
 import MapView from './components/MapView.jsx'
@@ -25,7 +25,6 @@ function Header() {
           <NavLink to="/fuentes">Fuentes</NavLink>
           <NavLink to="/metodo">Método</NavLink>
         </nav>
-        <a className="header-download" href="./becas.csv" download="becas_colombia_verificadas.csv"><ArrowDownToLine size={16} /> <span>DESCARGAR CSV</span></a>
       </div>
     </header>
   )
@@ -103,7 +102,7 @@ function SourcesPage() {
 }
 
 function MethodPage() {
-  return <main className="page-container subpage"><div className="subpage-top"><span className="section-kicker">04 / MÉTODO</span><h1>Una base clara, <em>con sus límites.</em></h1><p>Reunimos convocatorias con elegibilidad comprobada para personas colombianas y conservamos el enlace donde se verificó cada dato.</p></div><div className="method-grid"><article><span>01 / SELECCIÓN</span><h2>Fuentes primero.</h2><p>Priorizamos portales de gobiernos, universidades y organismos oficiales. Los agregadores no son evidencia suficiente de elegibilidad. Un campo sin sustento se marca “No verificado”.</p></article><article><span>02 / CONVOCATORIAS</span><h2>Un programa, un registro.</h2><p>Las modalidades de una misma convocatoria se consolidaron. Los programas relacionados con solicitudes distintas siguen separados y sus posibles solapamientos se explican en las notas del CSV.</p></article><article><span>03 / MAPA</span><h2>Precisión visible.</h2><p>Las coordenadas de OpenStreetMap indican país, ciudad o universidad según la evidencia. Los límites provienen de Natural Earth. Los programas multinacionales figuran en la lista sin un punto arbitrario.</p></article><article><span>04 / FECHAS</span><h2>Una fotografía del tiempo.</h2><p>Los estados abierta, cerrada y recurrente corresponden al {fechaCorta(CORTE)}. Los plazos cambian por edición y algunos dependen de la institución o del curso.</p></article></div><section className="method-limits"><div><span className="section-kicker">EXCLUSIONES DOCUMENTADAS</span><h2>Popular no siempre significa elegible.</h2><p>Estos programas se omitieron tras revisar las condiciones publicadas.</p></div><div>{EXCLUSIONES.map((item) => <a key={item.name} href={item.url} target="_blank" rel="noopener noreferrer"><b>{item.name}</b><span>{item.reason}</span><ExternalLink size={16} /></a>)}</div></section><div className="method-download"><span>¿Quieres revisar la base completa?</span><a href="./becas.csv" download="becas_colombia_verificadas.csv">DESCARGAR CSV <ArrowDownToLine size={16} /></a></div></main>
+  return <main className="page-container subpage"><div className="subpage-top"><span className="section-kicker">04 / MÉTODO</span><h1>Una base clara, <em>con sus límites.</em></h1><p>Reunimos convocatorias con elegibilidad comprobada para personas colombianas y conservamos el enlace donde se verificó cada dato.</p></div><div className="method-grid"><article><span>01 / SELECCIÓN</span><h2>Fuentes primero.</h2><p>Priorizamos portales de gobiernos, universidades y organismos oficiales. Los agregadores no son evidencia suficiente de elegibilidad. Un campo sin sustento se marca “No verificado”.</p></article><article><span>02 / CONVOCATORIAS</span><h2>Un programa, un registro.</h2><p>Las modalidades de una misma convocatoria se consolidaron. Los programas relacionados con solicitudes distintas siguen separados y sus posibles solapamientos se documentaron durante la depuración.</p></article><article><span>03 / MAPA</span><h2>Precisión visible.</h2><p>Las coordenadas de OpenStreetMap indican país, ciudad o universidad según la evidencia. Los límites provienen de Natural Earth. Los programas multinacionales figuran en la lista sin un punto arbitrario.</p></article><article><span>04 / FECHAS</span><h2>Una fotografía del tiempo.</h2><p>Los estados abierta, cerrada y recurrente corresponden al {fechaCorta(CORTE)}. Los plazos cambian por edición y algunos dependen de la institución o del curso.</p></article></div><section className="method-limits"><div><span className="section-kicker">EXCLUSIONES DOCUMENTADAS</span><h2>Popular no siempre significa elegible.</h2><p>Estos programas se omitieron tras revisar las condiciones publicadas.</p></div><div>{EXCLUSIONES.map((item) => <a key={item.name} href={item.url} target="_blank" rel="noopener noreferrer"><b>{item.name}</b><span>{item.reason}</span><ExternalLink size={16} /></a>)}</div></section></main>
 }
 
 export default function App() {

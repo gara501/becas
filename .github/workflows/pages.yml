@@ -33,13 +33,12 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Construir sitio y CSV
+      - name: Construir sitio
         run: npm run build
 
       - name: Verificar archivos publicados
         run: |
           test -s dist/index.html
-          test -s dist/becas.csv
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5
