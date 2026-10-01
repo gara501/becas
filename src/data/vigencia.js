@@ -13,7 +13,10 @@ export function estadoVigente(item, pendientes = [], hoy = fechaHoyColombia()) {
   const verificacion = ISO.test(item.fecha_ultima_verificacion) ? item.fecha_ultima_verificacion : null
   const diasDesdeVerificacion = verificacion ? Math.floor((Date.parse(`${hoy}T12:00:00Z`) - Date.parse(`${verificacion}T12:00:00Z`)) / 86400000) : Infinity
   if (item.estado_convocatoria === 'cerrada') return { clave: 'cerrada', etiqueta: 'Cerrada', pendiente, motivo: null }
-  if (item.estado_convocatoria === 'recurrente') return { clave: 'recurrente', etiqueta: 'Recurrente', pendiente, motivo: cierre && cierre < hoy ? 'El plazo mostrado corresponde a una edición anterior.' : null }
+  if (item.estado_convocatoria === 'recurrente') {
+    if (!pendiente && apertura && cierre && apertura <= hoy && cierre >= hoy && diasDesdeVerificacion <= 30) return { clave: 'abierta', etiqueta: 'Abierta ahora', pendiente: false, motivo: null }
+    return { clave: 'recurrente', etiqueta: 'Recurrente', pendiente, motivo: cierre && cierre < hoy ? 'El plazo mostrado corresponde a una edición anterior.' : null }
+  }
   if (cierre && cierre < hoy) return { clave: 'cerrada', etiqueta: 'Cerrada', pendiente, motivo: 'Plazo vencido según la fecha publicada.' }
   if (apertura && apertura > hoy) return { clave: 'proxima', etiqueta: 'Próxima apertura', pendiente, motivo: null }
   if (pendiente || !cierre || diasDesdeVerificacion > 30) return { clave: 'pendiente', etiqueta: 'Por confirmar', pendiente: true, motivo: 'La apertura de esta edición necesita una nueva confirmación.' }
