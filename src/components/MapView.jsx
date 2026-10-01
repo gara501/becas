@@ -192,7 +192,7 @@ export default function MapView({ items, selectedCountry, selectedId, onCountryS
   }, [items])
   const countryStyle = (shape) => {
     const count = mapCounts.get(shape.properties.name) || 0
-    return { color: '#91a492', weight: 0.8, fillColor: count >= 5 ? '#aec6ac' : count >= 2 ? '#c4d4be' : count ? '#d5dfca' : '#f4f1e7', fillOpacity: 1, interactive: false }
+    return { color: '#7D8EA6', weight: 0.8, fillColor: count >= 5 ? '#344D7D' : count >= 2 ? '#7D8EA6' : count ? '#D4D9E1' : '#F9F9FC', fillOpacity: 1, interactive: false }
   }
   return (
     <div className="map-shell">
