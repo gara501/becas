@@ -91,3 +91,17 @@ La prueba abre el HTML final mediante `file://` en Chrome y verifica filtros, ru
 ## Estado del proyecto
 
 Fases 1 a 6 completadas. La primera consulta completa de fase 6 encontró 7 sitios inaccesibles desde el script. La [revisión de la etapa 1](REVISION_ETAPA1.md) confirmó 12 de las 14 fichas pendientes; 2 siguen señaladas para revisión manual. El proceso incremental permite repetir la consulta o revisar solo esas fichas sin rehacer la base.
+
+## Presupuesto orientativo: piloto de tres destinos
+
+Cuatro fichas tienen un presupuesto de referencia en **EUR, GBP o SEK**: Maastricht NL-High Potential, University of Salford vía ICETEX, Ingvar Kamprad y Lund Global. Las fuentes oficiales de cada precio se abren desde la línea correspondiente en la ficha. El cálculo suma vivienda y otros gastos mensuales durante la duración documentada, más matrícula y costos puntuales conocidos. Luego resta únicamente la ayuda concedida para ese mismo componente y nunca más que el gasto estimado. Las modalidades de Salford y Kamprad son escenarios condicionales; el solicitante debe confirmar qué apoyo recibió.
+
+El sitio muestra **subtotal documentado** y **aporte personal documentado**, no un costo completo ficticio. El pasaje internacional y varios depósitos no tienen una referencia estable comparable; aparecen como faltantes. En Lund Global no se calcula total ni aporte: faltan programa, duración y porcentaje de matrícula concedido. En Salford la matrícula publicada es un rango de cursos, y el recargo de salud se proyecta para un año; la duración real de la visa puede aumentar ese importe. El anticipo de matrícula de Salford ya se descuenta de la matrícula y no se suma dos veces.
+
+Los importes están en moneda local, sin conversión a COP. Si se incorpora una conversión, deberá guardar tasa, fuente oficial y fecha de consulta junto al resultado. La fecha del piloto está en `src/data/presupuestos.js`. Para revisar su antigüedad:
+
+```powershell
+python scripts/revisar_presupuestos.py --max-dias 90
+```
+
+El flujo mensual `revisar-presupuestos.yml` falla cuando han pasado más de 90 días y avisa en Actions; **no modifica precios automáticamente**. La persona que actualiza debe abrir cada enlace, revisar importes, duración y condiciones de cobertura, cambiar solo valores confirmados y entonces actualizar `FECHA_PRECIOS`.

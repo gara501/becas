@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react'
 import { AlertTriangle, ArrowLeft, ArrowUpRight, CalendarDays, Download, GitCompareArrows, Globe2, Heart, MapPin, ShieldCheck, X } from 'lucide-react'
 import { DESCONOCIDO, fechaCorta } from '../data/catalogo.js'
 import { usePanelFocus } from '../hooks/usePanelFocus.js'
+import BudgetEstimate from './BudgetEstimate.jsx'
 
 const value = (text) => text && text !== DESCONOCIDO ? text.replaceAll(';', ' · ') : DESCONOCIDO
 const dateValue = (text) => text && text !== DESCONOCIDO ? fechaCorta(text) : DESCONOCIDO
@@ -37,6 +38,7 @@ export default function ScholarshipDetail({ item, estado, onClose, favorite, com
           <Field label="Área">{value(item.area_conocimiento)}</Field><Field label="Tipo de apoyo">{value(item.tipo_financiacion)}</Field>
           <Field label="Cobertura" wide>{value(item.cobertura)}</Field><Field label="Monto y moneda" wide>{value(item.monto_aproximado_y_moneda)}</Field>
         </dl></section>
+        <BudgetEstimate item={item} />
         <section className="detail-section"><h3>Antes de postular</h3><dl className="detail-fields">
           <Field label="Requisitos clave" wide>{value(item.requisitos_clave)}</Field><Field label="Idioma requerido">{value(item.idioma_requerido)}</Field><Field label="Nacionalidad elegible">{value(item.nacionalidad_elegible)}</Field>
           <Field label="Apertura"><CalendarDays size={14} /> {dateValue(item.fecha_apertura)}</Field><Field label="Cierre"><CalendarDays size={14} /> {dateValue(item.fecha_cierre)}</Field>
